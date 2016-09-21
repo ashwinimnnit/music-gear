@@ -1,0 +1,34 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/*'
+    - 'test/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+  TargetRubyVersion: 2.2
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 16
+
+Metrics/AbcSize:
+  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
+  # a Float.
+  Max: 20
+
+Style/DotPosition:
+  EnforcedStyle: leading
+
+Encoding:
+  Enabled: false
+
+LineLength:
+  Max: 90
+
+Documentation:
+  Enabled: false
+
+

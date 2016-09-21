@@ -1,0 +1,30 @@
+<%= form_for @item, :url => {:action => :create, :controller => :items}, html: { multipart: true} do |f| %>
+
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br />
+
+  <%= f.label :description %>:
+  <%= f.text_area :description %><br />
+
+   <select name="item[catagory_id]">
+     <option value=""></option>
+     <option value="1" selected="selected">catagory1</option>
+     <option value="2">catagory2</option>
+     <option value="3">catagory3</option>
+   </select>
+
+  <% 4.times do %> 
+   <div class ="item-image">
+     <input id="item-image" type="file" name="item[image][]">
+   </div>
+  <% end %>
+ 
+  <%= f.label :price %>
+  <%= f.text_field :price %><br />
+   <%#=  user_addresses @user_profile %>
+   <%#= react_component('UsernewAddress') %>
+   <%#= react_component('UserAddressess',  { user: @user_profile.id}) %>
+    
+  <%= f.submit %>
+<% end %>
+

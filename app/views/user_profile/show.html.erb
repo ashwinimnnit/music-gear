@@ -1,0 +1,23 @@
+
+  <% if @user_profile.image %>
+    <div class ="user-med-pic">
+      <%= image_tag @user_profile.image.picture.url(:thumb), id: 'dis-img' %>
+    </div>
+  <% end %>
+  <%= render "form" %>
+       <% user_info = @user_profile.addresses.first %>
+
+  <div class = "user-address">
+   <div> Name: <%= @user_profile.name %> </div>
+                House No: <%= user_info.house_no %><br/>
+                 Street: <%= user_info.street %><br/>
+                  City: <%= user_info.city %><br/>
+                    State: <%= user_info.state %><br/>
+    <div> Phone no: <%=@user_profile.phone_numbers.first.contact_number%></div>
+  </div>
+  <%= link_to 'Edit Profile', edit_user_profile_path(@user_profile.id) %>
+  <br>
+  <%= link_to 'Add Item', new_user_profile_item_path(@user_profile.id) %><br /><br/ >
+  <%= link_to 'Manage Address', user_profile_address_index_path(@user_profile.id)%><br>
+  <%= react_component('UserItem', props_user: @user_profile.id) %>
+

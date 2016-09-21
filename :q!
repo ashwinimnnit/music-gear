@@ -1,0 +1,33 @@
+# comments
+class Item < ActiveRecord::Base
+  has_many :images, as: :imageable
+  belongs_to :user_profile
+  def self.user_item(user_profile)
+    user_items = Item
+                 .includes(:user_profile, :images)
+                 .where("items.user_profile_id=#{user_profile.id}")
+    items_list = {}
+    user_items.each do |i|
+      items_list[i.id] = i.as_json
+      temp = {}
+      i.images.each do |path|
+        temp[path.id] = path.picture.url(:medium)
+      end
+      items_list[i.id][:images] = temp
+    end
+    items_list
+  end
+
+  def self.update_user_item(param)
+    item_hash = {}
+    item_image_path = {}
+    item = Item.find_by_id(param[:id].to_i)
+    item.update(param[:item].to_hash)
+    item_hash[:item] = item.as_json
+    item.images.each do |img|
+      item_image_path[img.id] = img.picture.url(:medium)
+    end
+    item_hash[:item][:images] = item_image_path
+    item_hash
+  end
+end

@@ -1,0 +1,19 @@
+<%= form_for @user_profile, html: { multipart: true } do |f| %>
+  
+   <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+   <label for="user_profile_phone_numbers_contact_number">Contact number</label><br/>
+   <% @user_profile.phone_numbers.each do |p_num| %>
+      <input id="user_number" type="text" 
+       name="contact_number[<%=p_num.id %>]" value = <%=p_num.contact_number %> ><br/>
+   <% end%>
+
+  <%= f.label :default_address %>:
+  <%= f.text_field :default_address %><br />
+  
+   <div class ="user-med-pic">
+     <input id="profile_image" type="file" name="image">
+   </div>
+  <%= f.submit %>
+<% end %>
