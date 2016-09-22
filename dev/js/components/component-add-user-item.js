@@ -18,7 +18,7 @@ var AddUserItem = React.createClass({
 	  return(<div className="add-itm-div">{browseButton}</div>)
   },
 
-  postUserDeatils: function() {
+  postUserDeatils: function(){
  	  var url = "http://localhost:4000/user_profile/1/items.json"
  	  var formdata = new FormData() 
     var inputs = document.getElementById("addItem-form")
