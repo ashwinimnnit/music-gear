@@ -20,10 +20,10 @@ var AddUserItem = React.createClass({
 
   // post user data
   postUserDeatils: function() {
- 	  var url = "http://localhost:4000/user_profile/1/items.json"
- 	  var formdata = new FormData() 
-    var inputs = document.getElementById("addItem-form")
-    var self = this
+ 	  var url = "http://localhost:4000/user_profile/1/items.json";
+ 	  var formdata = new FormData();
+    var inputs = document.getElementById("addItem-form");
+    var self = this;
     for(var input in inputs) {
       if (inputs[input] ) {
       		if (inputs[input].type == "file" && (typeof inputs[input].files[0] != "undefined")){
