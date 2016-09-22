@@ -1,23 +1,16 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from "react-dom";
-import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import promise from 'redux-promise';
-import createLogger from 'redux-logger';
-import allReducers from './reducers';
-import App from './components/App';
+import {createStore, applyMiddleware} from "redux"
+import {Provider} from "react-redux"
+import thunk from "redux-thunk";
+import axios from "axios";
+import UserProfile from "./components/component-user-profile"
 
-const logger = createLogger();
-const store = createStore(
-    allReducers,
-    applyMiddleware(thunk, promise, logger)
-);
-
-ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
-);
+// thunk middleware allowes us to dispatch async actions
+/*const store = createStore(
+      (state = {}) => state,
+      applyMiddleware(thunk)
+	);
+*/
+ReactDOM.render(<div > <UserProfile/></div>, document.getElementById('root'));
