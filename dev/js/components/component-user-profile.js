@@ -33,13 +33,14 @@ var UserProfile = React.createClass({
   },
    
   searchBox: function(){
-    if (window.location.pathname == "/"){
+    console.log(window.location)
+    //if (window.location.pathname == "/" ){
       return(<SearchItems/>)
-    }
-    else{
+    //}
+    /*else{
 
       return(<div></div>)
-    }
+    }*/
   },
 
   render: function() {

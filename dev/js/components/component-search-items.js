@@ -14,7 +14,7 @@ var SearchItems = React.createClass({
 
   suggestionList: function(){
     var suggestions = this.state.searchResult
-	var list = []
+	  var list = []
     for(var item in suggestions){
       list.push(<li key ={item} className ="sugg-list" activeClassName="active">
       	        <Link to={"/item/"+suggestions[item].id} onlyActiveOnIndex={true}>
@@ -22,10 +22,12 @@ var SearchItems = React.createClass({
       	        </Link></li>
       )
     }
-    return(<ul className ="search-list">
+    if (list.length > 0){
+      return(<ul className ="search-list">
     	       {list}
-   		   </ul>
-    ) 
+   		      </ul>
+      ) 
+    }
   },
 
   search: function(e){
@@ -44,7 +46,7 @@ var SearchItems = React.createClass({
   },
 
   searchBox: function(){
-    return(<div>
+    return(<div className="divsearchbar">
              <input type ="text" 
        			    className ="search-btn"
        			    onChange = {this.search}

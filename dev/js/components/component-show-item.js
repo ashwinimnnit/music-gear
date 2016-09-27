@@ -20,31 +20,31 @@ var ShowItem = React.createClass({
   },
 
   displayItem: function(){
-  	console.log(this.state.itemToDisplay.image)
   	var images = this.state.itemToDisplay.image
-  	 var item = this.state.itemToDisplay
-    /*this.state.itemToDisplay.map(function(item){
-     console.log(item)
-    })*/
+  	var item = this.state.itemToDisplay
     var imageArr = []
       for(var img in images){
-        imageArr.push(<img src={"http://localhost:4000"+images[img]} />)
-        console.log(img)
+        imageArr.push(<img className = "item-img" src={"http://localhost:4000"+images[img]} />)
       }
       return(
     <div className= "item-desc"> 
-     <div> 
+     <h2> 
       {item.title}
-      </div>
+      </h2>
       <div> {item.description}</div>
-      <div className="item-img"> {imageArr}</div>
+      <div className="divitem-img"> {imageArr}</div>
+      <div className ="raise-btn"> Send Rent Request</div>
     </div>
    )
   },
 
-render: function(){
-	 
-	return(<div>hieee {this.displayItem()}</div>)
+render: function(){ 
+  return(
+    <div className="item-desc-wrapper">
+	    {this.displayItem()}
+
+	</div>
+  )
 }
 
 })
