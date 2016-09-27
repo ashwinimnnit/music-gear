@@ -1,6 +1,8 @@
 import React from "react";	
 require('../../scss/style.scss');
 import axios from "axios"
+import { Router, Route, Link, NavLink, browserHistory, IndexRoute  } from 'react-router'
+
 
 var SearchItems = React.createClass({
   getInitialState: function(){
@@ -14,7 +16,11 @@ var SearchItems = React.createClass({
     var suggestions = this.state.searchResult
 	var list = []
     for(var item in suggestions){
-      list.push(<li className ="sugg-list">{suggestions[item]}</li> )
+      list.push(<li key ={item} className ="sugg-list" activeClassName="active">
+      	        <Link to={"/item/"+suggestions[item].id} onlyActiveOnIndex={true}>
+      	              {suggestions[item].title}
+      	        </Link></li>
+      )
     }
     return(<ul className ="search-list">
     	       {list}
@@ -50,6 +56,7 @@ var SearchItems = React.createClass({
   },
 
   render: function(){
+  	console.log("------------SearchItems")
     if (this.state.searchResultArrived){
 	  return(<div>
                {this.searchBox()}
@@ -60,6 +67,7 @@ var SearchItems = React.createClass({
 	else {
 	  return(<div>
                {this.searchBox()}
+               {this.props.children}
              </div>
 	  )
 	}	

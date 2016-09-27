@@ -1,85 +1,55 @@
-import React from "react";	
-import {connect} from "react-redux"
+import React from "react";
 import axios from "axios"
 import ReactDOM from "react-dom";
-import UserItems from "./component-user-items"
-import AddUserItem from "./component-add-user-item"
 import SearchItems from "./component-search-items"
 require('../../scss/style.scss');
+import { Router, Route, Link } from 'react-router'
 
 var UserProfile = React.createClass({
   getInitialState: function() {
-    return {
-      items: '', 
+    return { 
       isUpdateClick: false,
-      isAddItemClicked: false
+      isAddItemClicked: false,
+      isHomePage: true
     };
   },
 
-  setAddItemFalg: function(){
-    this.setState({isAddItemClicked: true})
-  },
-
-  headerBanner: function(){
-    return(<div className = "header">
-             <div>
-               <div className ="my-item" 
-                    onClick={() => this.handleClick()}>
-                    My Items
-               </div>
-               <span className ="usr-name" > Hi ashwini </span>
-             </div>
-           </div>
+  header: function(){
+    return(
+    <div className = "header">   
+      <div className="dropdown">
+        <span className="select-span">Select</span>
+        <div className="dropdown-content">
+        <ul>
+          <li><Link to="/myitems" >My Items</Link></li>
+          <li><Link to="/additem" > Add item</Link></li>
+           <li><Link to="/" > Profile</Link></li>
+        </ul>
+      </div>
+    </div>    
+    
+    </div>
     )
   },
+   
+  searchBox: function(){
+    if (window.location.pathname == "/"){
+      return(<SearchItems/>)
+    }
+    else{
 
-  userItemList: function(){
-    return(<div className = "item-list"> 
-           <UserItems  onUserclick={this.handleClick}
-                       items = {this.state.items}
-                       itemUpdated = {this.itemUpdated} />
-           </div>
-    )
+      return(<div></div>)
+    }
   },
-
-  itemUpdated: function(newItem){
-    var temp = Array.new
-    temp = this.state.items
-    temp[newItem.id] = newItem
-    this.setState({items: temp})
-  },
-
-  handleClick: function() {
-    var self = this;
-    axios.get("http://localhost:4000/user_profile/1/items.json")
-      .then(function (response) {   
-          self.setState({
-              items: response.data.items,
-              isAddItemClicked: false
-          });
-      })
-  },
-
 
   render: function() {
-    if (this.state.isAddItemClicked){
-      return(<div>
-              {this.headerBanner()}
-              <AddUserItem itemCreated ={this.itemUpdated}/>
-             </div>
-      )
-    }
-    else {
-      return (<div>
-              {this.headerBanner()}
-              <SearchItems/>
-              <div className="add-itm"
-                   onClick ={() => this.setAddItemFalg()}>
-                  Add Item</div>
-                {this.userItemList()}
-              </div>
+      return (
+        <div>
+          {this.header()}
+          {this.searchBox()}
+          {this.props.children}
+        </div>
       );
-    }
   }
 });
 export default UserProfile;

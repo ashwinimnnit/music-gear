@@ -22,8 +22,7 @@ var UpdateUserItem = React.createClass({
       contentType: false,
       data:  fd,
    	}).then(function (response) { 
-         self.props.itemUpdated(response.data.msg.item)
-         self.props.resetEditClick()
+         self.props.onItemUpdation(response.data.msg.item)
        }).catch(function (error) {
      	    alert("some error occured");
           });;
@@ -51,7 +50,7 @@ var UpdateUserItem = React.createClass({
   },
 
 
-  editForm: function() {
+   editForm: function() {
     var item = this.props.itemtoupdate
     return(
     	   <form className = "update-form" id ="update-form"
@@ -76,12 +75,7 @@ var UpdateUserItem = React.createClass({
 
 
   render: function() {
-    if (this.props.IsEditClicked && !this.state.isupdateclicked){
       return(this.editForm())
-    }
-    else {
-      return (<div> </div>)
-    }
   }
 })
 export default UpdateUserItem;

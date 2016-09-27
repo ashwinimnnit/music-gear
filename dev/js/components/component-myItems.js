@@ -1,30 +1,48 @@
 import React from "react";
-import axios from "axios";
+import axios from "axios"
 import UpdateUserItem from "./component-update-user-item"
+var MyItems = React.createClass({
 
-var UserItems = React.createClass({
-  getInitialState: function() {
+ getInitialState: function() {
     return {
+      items: '',
+      itemtoupdate: "",
       IsEditClicked: false,
-      itemtoupdate: ""
+      isItemUpdated: false
     };
   },
 
-  resetEditClick: function(){
-    this.setState({IsEditClicked: false})
+  onItemUpdation: function(updateItem){
+  	var id = updateItem.id
+  	var temp = this.state.items
+  	temp[id] = updateItem
+  	this.setState({items: temp,
+    itemtoupdate: "",
+    IsEditClicked: false
+  	})
   },
+
+ componentDidMount: function() {
+    var self = this;
+    axios.get("http://localhost:4000/user_profile/1/items.json")
+      .then(function (response) {   
+          self.setState({
+              items: response.data.items
+          });
+      })
+  },	
 
   handleEdit: function(e){
-   var itemtoupdate = this.props.items[e.target.id]
-   this.setState({
-            IsEditClicked: true,
-            itemtoupdate: itemtoupdate
-        });
+  	 var temp = this.state.items[e.target.id]
+     this.setState({
+       IsEditClicked: true,
+       itemtoupdate: temp
+     })
+    
   },
 
-
-  prepareHtml: function() {
-    var user_item = this.props.items
+   itemlisting: function() {
+    var user_item = this.state.items
     var itemdiv = []
     for( var itemId in user_item) {
       var indents = [];
@@ -65,27 +83,18 @@ var UserItems = React.createClass({
     return itemdiv;
   },
 
-  geteditform: function(){
+  geteditform: function() {
     return (<div className = "edit-form" >
-            <UpdateUserItem updateuseritem = {this.UpdateUserItem}
-                            IsEditClicked = {this.state.IsEditClicked}
-                            itemtoupdate = {this.state.itemtoupdate} 
-                            itemUpdated = {this.props.itemUpdated}
-                            resetEditClick = {this.resetEditClick} />
+            <UpdateUserItem itemtoupdate = {this.state.itemtoupdate} 
+                            onItemUpdation = {this.onItemUpdation}/>
             </div>
     )
-  },
+},
 
-  useritems: function() {
-    var useritemlist =  this.props.items != "" ? this.prepareHtml() : ""
-    return useritemlist;
-  },
-
-  render: function() {
-    return (<div>
-              {this.useritems()}        
-            </div>
-    );
+  render: function(){
+    return(
+      <div className="item-list">{this.itemlisting()}</div>
+    )
   }
-});
-export default UserItems;
+})
+export default MyItems

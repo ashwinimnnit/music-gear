@@ -18,6 +18,8 @@ var AddUserItem = React.createClass({
 	  return(<div className="add-itm-div">{browseButton}</div>)
   },
 
+ 
+
   // post user data
   postUserDeatils: function() {
  	  var url = "http://localhost:4000/user_profile/1/items.json";
@@ -26,13 +28,13 @@ var AddUserItem = React.createClass({
     var self = this;
     for(var input in inputs) {
       if (inputs[input] ) {
-      		if (inputs[input].type == "file" && (typeof inputs[input].files[0] != "undefined")){
+        if (inputs[input].type == "file" && (typeof inputs[input].files[0] != "undefined")){
       			formdata.append(inputs[input].name, inputs[input].files[0])
       			
-      		}
-      		else if(textType.includes(inputs[input].type)) {      			
-       			formdata.append("item["+inputs[input].name+"]", inputs[input].value)
-      		}
+      	}
+      	else if(textType.includes(inputs[input].type)) {      			
+       	  formdata.append("item["+inputs[input].name+"]", inputs[input].value)
+      	}
       }
     }
  	  axios({
