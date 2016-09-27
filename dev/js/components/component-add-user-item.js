@@ -22,8 +22,8 @@ var AddUserItem = React.createClass({
 
   // post user data
   postUserDeatils: function() {
- 	  var url = "http://localhost:4000/user_profile/1/items.json";
- 	  var formdata = new FormData();
+    var url = "http://localhost:4000/user_profile/1/items.json";
+    var formdata = new FormData();
     var inputs = document.getElementById("addItem-form");
     var self = this;
     for(var input in inputs) {
@@ -37,21 +37,21 @@ var AddUserItem = React.createClass({
       	}
       }
     }
- 	  axios({
+    axios({
       method: 'post',
       url: url,
       processData: false,
       contentType: false,
       data:  formdata,
-   	}).then(function (response) {
-   			if (response.data.item.status == 500){
-   				alert ("some error occured")
-   			}
-   			else if (response.data.item.status == 200){
-   				alert("item created")
-   			}
+    }).then(function (response) {
+         if (response.data.item.status == 500){
+   	   alert ("some error occured")
+         }
+   	 else if (response.data.item.status == 200){
+   	  alert("item created")
+         }
         {self.props.itemCreated}  
-   		 })
+       })
   },
 
   addItemForm: function(){
