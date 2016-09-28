@@ -49,7 +49,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import UserProfile from "./components/component-user-profile"
 import MyItems from "./components/component-myItems"
-import SearchItems from "./components/component-search-items"
+import SearchUi from "./components/component-search-items"
 import AddUserItem from "./components/component-add-user-item"
 import ShowItem from "./components/component-show-item"
 import { Router, Route, Link , browserLocation, browserHistory} from 'react-router'
@@ -59,8 +59,10 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={UserProfile} >
       <Route path="/myitems" component={MyItems} />
-       <Route path="/additem" component={AddUserItem} />
-        <Route path="/item/:itemid" component={ShowItem} />
+       <Route path="/additem" component={AddUserItem} /> 
+         <Route component={SearchUi}>
+           <Route path="/item/:itemid" component={ShowItem} />
+        </Route>
     </Route>
   </Router>
 ), document.getElementById('root'))
