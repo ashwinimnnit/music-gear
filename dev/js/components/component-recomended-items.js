@@ -44,12 +44,6 @@ var RecommendedItems = React.createClass({
   	)
   }
 
-
-
-
-
-
-
 })
 
 export default RecommendedItems;
