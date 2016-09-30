@@ -103,7 +103,9 @@ hr {
 
 .itm-up{
 	
-	display: inline-block
+	display: inline-block;
+    height: 150px;
+    width: 150px
 }
 
 
@@ -365,10 +367,58 @@ padding: 5px 0 6px 4px;}
 
 
 .item-desc-wrapper{
-    background-color: #c2c2c2;
     float: left;
     left: 10%;
     position: relative;
     top: 158px;
     width: 80%
+}
+
+.MyClass{
+   background: #949494 none repeat scroll 0 0;
+   opacity: 0.9;
+}
+
+.hide{
+    opacity:0
+}
+
+.item-images{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.recom-img{
+    max-height: 150px;
+    max-width: 150px;
+}
+
+.recom-div{
+   display: inline-flex;
+    padding: 32px 0 198px;
+    position: relative;
+}
+
+
+.recom-itms{
+   background: #6e6e6e none repeat scroll 0 0;
+    box-shadow: 5px 4px 14px 0;
+    padding: 27px 35px 27px 41px;
+    position: relative;
+}
+
+.recom-itm-title{
+    color: #ffff;
+    font-family: arial;
+}
+
+.fo-ban{
+     background: #6e6e6e none repeat scroll 0 0;
+    box-shadow: 63px 88px 103px 0;
+    color: #ffff;
+    font-family: arial;
+    font-size: 23px;
+    padding: 15px 0 16px 314px;
+    position: relative;
+    top: 30px
 }

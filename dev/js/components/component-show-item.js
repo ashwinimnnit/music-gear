@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios"
+import RecommendedItems from "./component-recomended-items"
 import { browserHistory } from 'react-router';
 
 var ShowItem = React.createClass({
@@ -28,7 +29,7 @@ var ShowItem = React.createClass({
     var item = this.state.itemToDisplay
     var imageArr = []
       for(var img in images){
-        imageArr.push(<img className = "item-img" src={"http://localhost:4000"+images[img]} />)
+        imageArr.push(<img className = "item-img" src={"http://localhost:4000"+images[img]} className="item-images" />)
       }
       return(
      <div className= "item-desc"> 
@@ -47,7 +48,7 @@ render: function(){
   return(
     <div className="item-desc-wrapper">
       {this.displayItem()}
-
+     <RecommendedItems parentItemId = {this.props.params.itemid}/>
   </div>
   )
 }

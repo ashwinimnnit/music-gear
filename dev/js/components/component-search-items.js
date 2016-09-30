@@ -51,11 +51,13 @@ var SearchUi = React.createClass({
    	   })
   },
 
+ 
+
   searchBox: function(){
     return(<div className="divsearchbar">
              <input type ="text" 
        			    className ="search-btn"
-       			    onChange = {this.search}
+       			    onChange = {this.search} onFocus = {this.changeStyle} 
        			    placeholder ="what are you looking for" />
         	 <img src ="http://localhost:3000/images/search1.png"
         		  className="search-img"/>
