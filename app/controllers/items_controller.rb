@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.display_item(params)
   end
 
   def create

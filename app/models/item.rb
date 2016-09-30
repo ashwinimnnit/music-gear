@@ -2,7 +2,21 @@
 class Item < ActiveRecord::Base
   has_many :images, as: :imageable
   belongs_to :user_profile
+  has_many :recommend_items_mapping, class_name: 'RecommendItem', dependent: :destroy,
+                                     foreign_key: 'item_id'
   validates :title, :description, presence: true
+  def self.display_item(param)
+    response = {}
+    temp = {}
+    item = find_by_id(param[:id].to_i)
+    item.images.each do |img|
+      temp[img.id] = "/system/#{img.imageable_type.downcase}/#{img.id}/medium/#{img.picture_file_name}"
+    end
+    response[:item] = item.as_json
+    response[:item][:image] = temp
+    response[:item]
+  end
+
   def self.user_item(user_profile)
     user_items = Item
                  .includes(:images)
@@ -55,6 +69,14 @@ class Item < ActiveRecord::Base
   end
 
   def self.search_items(query)
-    Item.where('title LIKE :query', query: "#{query}%").map(&:title)
+    item = {}
+    index = 1
+    Item.where('title LIKE :query', query: "#{query}%").each do |i|
+      temp = {}
+      temp[:id] = i.id
+      temp[:title] = i.title
+      item[index] = temp
+      index += 1
+    end
   end
 end

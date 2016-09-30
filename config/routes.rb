@@ -15,7 +15,10 @@ Rails.application.routes.draw do
         resources :image
       end
     end
-  # resources :items
+   resources :items
+   resources :items do
+     resources :recommended_item
+   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
