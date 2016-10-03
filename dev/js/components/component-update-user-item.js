@@ -40,7 +40,7 @@ var UpdateUserItem = React.createClass({
     for (var thumbId in item.thumbnail){
       arr.push(
        		   <div className ="wrap">
-       		   <img src={"http://localhost:4000"+item.thumbnail[thumbId]} />
+       		   <img src={"http://localhost:4000"+item.thumbnail[thumbId]} key= {"img"+thumbId} />
        		   <input type="file" id = {thumbId}
        			      name="item_image[]" accept="image/*" 
        			      as="file" onChange = {this.setImageparams}/></div> 
@@ -59,14 +59,14 @@ var UpdateUserItem = React.createClass({
 
  	          <input type="text" placeholder="title..." id = "title"
  	                 name = "title" defaultValue ={item.title} /> 
- 	        <p>
+ 	        <div>
  	          <textarea type="text" placeholder="description" id = "description"
  	                    defaultValue = {item.description} 
  	                    name = "description"/>
- 	        </p>
- 	        <p>   
+ 	        </div>
+ 	        <div>   
  	         {this.imageUpdation()}
- 	        </p>
+ 	        </div>
  	        <input type = "button" value = "Update"
  	               onClick ={this.handleUpdate} id = {item.id} />	       
  	       </form>

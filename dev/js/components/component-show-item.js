@@ -14,7 +14,6 @@ var ShowItem = React.createClass({
 
 
  componentDidMount: function() {
-  console.log("componentDidMount----------------")
     var self = this;
     axios.get("http://localhost:4000/items/"+this.props.params.itemid+".json")
       .then(function (response) {   
@@ -44,7 +43,6 @@ var ShowItem = React.createClass({
  },
 
 render: function(){ 
-  console.log("----------ShowItem-----------------is child")
   return(
     <div className="item-desc-wrapper">
       {this.displayItem()}

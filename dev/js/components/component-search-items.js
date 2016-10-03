@@ -4,7 +4,7 @@ import axios from "axios"
 import { Router, Route, Link, NavLink, browserHistory, IndexRoute  } from 'react-router'
 
 
-var SearchUi = React.createClass({
+var Search = React.createClass({
   getInitialState: function(){
     return{
   	  searchResultArrived: false,
@@ -66,10 +66,7 @@ var SearchUi = React.createClass({
   },
 
   render: function(){
-    console.log("-------------search item patemnt hai")
     if (this.state.searchResultArrived && this.state.showsuggestionList){
-      console.log("---if -------------------------")
-      console.log(this.props.children)
 	    return(<div>
                {this.searchBox()}
                {this.suggestionList()}
@@ -77,8 +74,6 @@ var SearchUi = React.createClass({
 	    )
 	  }
 	  else {
-      console.log("--------------else------------------")
-      console.log(this.props.children)
 	    return(<div>
                {this.searchBox()}
                {this.props.children}
@@ -87,4 +82,4 @@ var SearchUi = React.createClass({
 	  }	
   }
 })
-export default SearchUi
+export default Search

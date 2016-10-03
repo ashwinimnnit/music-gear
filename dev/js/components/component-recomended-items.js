@@ -4,7 +4,7 @@ import axios from "axios"
 var RecommendedItems = React.createClass({
   getInitialState: function() {
     return { 
-      recommendedItems:""
+      recommendedItems: []
     };
   },
 
@@ -19,7 +19,6 @@ var RecommendedItems = React.createClass({
          self.setState({ recommendedItems: response.data.recommended_itmes
 
          })
-         console.log(this.state.recommendedItems)
    	   })
   },
 
@@ -28,20 +27,29 @@ var RecommendedItems = React.createClass({
    var items = this.state.recommendedItems
     for(var item in items){
        itemArr.push(<div className="recom-itms">
-        <img className="recom-img" src={"http://localhost:4000/"+items[item].images[Object.keys(items[item].images)[0]]}/>
-        <div className="recom-itm-title"> {items[item].title}</div></div>
+        <img  className="recom-img" src={"http://localhost:4000/"+items[item].images[Object.keys(items[item].images)[0]]}/>
+        <div  className="recom-itm-title"> {items[item].title}</div></div>
        )
     }
     return(<div className="recom-div">{itemArr}</div>)
   },
 
   render: function(){
-  	return(
-  	  <div>
-  	   <div className="fo-ban"> You might also like these</div> 
-  		{this.displayRecomendedItem()}
-  	   </div>
+    console.log("-----------------------------jk")
+    console.log()
+    if (Object.keys(this.state.recommendedItems).length > 0){
+  	   return(
+  	     <div>
+  	      <div className="fo-ban"> You might also like these</div> 
+  		        {this.displayRecomendedItem()}
+  	     </div>
   	)
+    }
+    else{
+      return(
+         <div></div>
+        )
+    }
   }
 
 })
