@@ -12,7 +12,6 @@ var ShowItem = React.createClass({
     };
   },
 
-
  componentDidMount: function() {
     var self = this;
     axios.get("http://localhost:4000/items/"+this.props.params.itemid+".json")

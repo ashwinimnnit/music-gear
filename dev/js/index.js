@@ -55,11 +55,13 @@ import ShowItem from "./components/component-show-item"
 import Layout from "./components/component-layout"
 import { Router, Route, Link , browserLocation, browserHistory} from 'react-router'
 import Admin from "./components/component-admin"
-
+import ManageRecommendedItems from "./components/manage-recommended-items"
 render((
   <Router history={browserHistory}>
     <Route  component={Layout} >
-        <Route path="/admin" component={Admin} />
+        <Route path="/admin" component={Admin} >
+        <Route path ="/admin/manage-recomeded-items" component={ManageRecommendedItems}/>
+        </Route>
         <Route path="/" component={UserProfile} >
             <Route path="/myitems" component={MyItems} />
             <Route path="/additem" component={AddUserItem} /> 

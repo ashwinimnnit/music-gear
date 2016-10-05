@@ -51,8 +51,6 @@ var Search = React.createClass({
    	   })
   },
 
- 
-
   searchBox: function(){
     return(<div className="divsearchbar">
              <input type ="text" 
@@ -62,10 +60,11 @@ var Search = React.createClass({
         	 <img src ="http://localhost:3000/images/search1.png"
         		  className="search-img"/>
             </div>
-	)
+	  )
   },
 
   render: function(){
+
     if (this.state.searchResultArrived && this.state.showsuggestionList){
 	    return(<div>
                {this.searchBox()}

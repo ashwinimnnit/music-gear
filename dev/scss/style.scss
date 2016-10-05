@@ -407,7 +407,7 @@ ul {
     background-color: #fff;
     z-index:100;
     float:left;
-  left:316px;
+  left:351px;
   top:110px;
   width:41.8%;
  }
@@ -444,10 +444,91 @@ li:hover{
 
 
 .admin{
-    position: relative;
-    top: 100px;
+   position: fixed;
+    top: 86px;
     float: left;
-    left: 32%;
-    font-size: 50px;
+    left: 21%;
+    background-color: #ECF0EE;
+    width: 57%;
+}
 
+.admin-action-itms{
+        margin-left: -249px;
+    width: 210px;
+    position: fixed;
+    top: 84px;
+    padding: 13px 22px 17px 13px;
+    box-shadow: 1px 7px 23px -7px;
+    border-radius: 4px;
+}
+
+.admin-action-itms > ul {
+    
+        padding: 0px 0 0 0px;
+}
+
+
+.admin-action-itms > ul > span >li
+
+{
+  cursor: pointer; 
+ padding: 11px 3px 9px 6px;
+ color: #757574
+}
+
+
+.all-items{
+     background-color: #f3f3f3;
+    color: #757574;
+    padding: 15px 19px 23px 23px;
+    max-height: 629px;
+    overflow-y: scroll;
+    box-shadow: 1px 2px 10px 0px;
+    width: 30%;
+}
+
+.itm{
+  padding: 6px 0 10px 0;
+  cursor: pointer;
+}
+
+.admin-srch{
+    
+    display: inline-block;
+    float: left;
+    left: 47%;
+    position: fixed;
+    top: 80px;
+    width: 28%;
+    z-index: 10;
+}
+
+.admin-srch > input{
+    
+    height: 37px;
+    position: relative;
+    text-align: center;
+    top: 19px;
+    width: 80%;
+    box-shadow: 4px 1px 5px -3px;
+}
+
+
+.ld-i{
+position: relative;
+    top: -618px;
+    float: left;
+    left: 45.6%;
+    box-shadow: -1px 5px 21px -4px;
+    width: 312px;
+}
+
+
+.ld-i > ul > li
+{
+    
+padding: 5px 6px 11px 5px;
+    color: #757574;
+    font-family: arial;
+    cursor: pointer
 }
