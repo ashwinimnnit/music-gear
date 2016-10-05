@@ -79,4 +79,21 @@ class Item < ActiveRecord::Base
       index += 1
     end
   end
+
+  def self.dynamic_sql_statement(columns_name = [])
+    size = columns_name.size
+    statement = ''
+    columns_name.each_with_index do |i, index|
+      statement += i
+      statement += ', ' unless size - 1 == index
+    end
+    statement
+  end
+
+  def self.item_listing(params)
+    offset = params[:offset].to_i
+    limit = params[:limit].to_i ||= 5
+    statement = dynamic_sql_statement(params.except(:offset, :limit).values)
+    Item.select(statement).offset(offset).limit(limit)
+  end
 end

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # See how all your routes lay out with 'rake routes'.
 
-  # You can have the root of your site routed with "root"
+  # You can have the root of your site routed with 'root'
   # root 'welcome#index'
     resources :user_profile do
       resources :items
@@ -15,10 +15,15 @@ Rails.application.routes.draw do
         resources :image
       end
     end
-   resources :items
    resources :items do
      resources :recommended_item
    end
+
+   post ":controller(/:action(/*params))", controller: /apis\/[^\/]+/
+   get ":controller(/:action(/*params))", controller: /apis\/[^\/]+/
+   put ":controller(/:action(/*params))", controller: /apis\/[^\/]+/
+   patch ":controller(/:action(/*params))", controller: /apis\/[^\/]+/
+   delete ":controller(/:action(/*params))", controller: /apis\/[^\/]+/
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
