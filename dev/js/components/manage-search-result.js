@@ -12,8 +12,9 @@ var AdminSearch = React.createClass({
 
   searchBox: function(){
     return(
-      <div className="admin-srch">
-        <input type="text"  placeholder="search recommemded items" onChange = {this.search}/>
+      <div className = "admin-srch">
+        <input type = "text"  placeholder = "search recommemded items"
+         onChange = {this.search}/>
       </div>
     )
 
@@ -21,8 +22,8 @@ var AdminSearch = React.createClass({
 
     search: function(e){
     var url = "http://localhost:4000/search.json"
-	var self = this
-	axios({
+	  var self = this
+	  axios({
       method: 'post',
       url: url,
       data:  {query: e.target.value  },
@@ -33,7 +34,6 @@ var AdminSearch = React.createClass({
          })
    	   })
    },
-
 
    stickersGenerator: function(e){
     this.props.recommendedItemStickers(e) 
@@ -58,27 +58,24 @@ var AdminSearch = React.createClass({
    },
 
 
- render: function(){
- 	if(this.state.issuggestionArrived && this.state.searchresult != null){
- 	return (
-      <div >
-        {this.searchBox()}
-        {this.listingSuggestion()}
-      </div>
-    )
-    }
-    else{
-     return (
-      <div> 
-        {this.searchBox()}
-      </div>
-    )
-
-    }
+   render: function(){
+ 	   if(this.state.issuggestionArrived && this.state.searchresult != null){
+ 	     return (
+         <div >
+           {this.searchBox()}
+           {this.listingSuggestion()}
+         </div>
+       )
+     }
+     else{
+       return(
+         <div> 
+          {this.searchBox()}
+         </div>
+       )
+     }
  }
-
 })
-
 export default AdminSearch
 
 	

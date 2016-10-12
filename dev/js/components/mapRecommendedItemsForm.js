@@ -16,6 +16,7 @@ var DisplayMappedItems = React.createClass({
    	  allSticker.map(function(value){
         array.push(
           <div key = {value.value} className ="stickers">
+          <img src="http://localhost:3000/images/cross-x.png" className="delete-btn"/>
           <span > {value.name}</span>
           <input type = "hidden" name = "parent_item[]" value = {value.value}/>
           </div>
@@ -32,6 +33,7 @@ var DisplayMappedItems = React.createClass({
    		allSticker.map(function(value){
           array.push(
             <div key = {value.value} className ="childstickers">
+            <img src="http://localhost:3000/images/cross-x.png" className="delete-btn"/>
             <span > {value.name}</span>
             <input type = "hidden" name = "recommended_item[]" value = {value.value}/>
             </div>

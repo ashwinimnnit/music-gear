@@ -63,7 +63,7 @@ var ManageRecommendedItems = React.createClass({
     var array =[]
     for(var i in hoverItem){
       array.push(
-       <div >
+       <div className = "item-hover" >
         <div> {hoverItem[i].title} </div>
         <div> {hoverItem[i].price}</div>
        </div>
@@ -92,7 +92,8 @@ var ManageRecommendedItems = React.createClass({
       array.push(
       	<div key = {items[i].id} className= "itm"  >
       	<input type="checkbox" name={items[i].title}
-      	 value={items[i].id} onClick={this.parentItemStickersGenerator}/> {items[i].title}
+      	 value={items[i].id} onClick={this.parentItemStickersGenerator}/>
+          {items[i].title}
          <span id = {items[i].id} 
       	 onMouseOver = {this.handleMouseOver}
       	 onMouseOut ={this.handleMouseOut}>

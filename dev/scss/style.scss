@@ -582,7 +582,7 @@ position: fixed;
 }
 
 .stickers{
-       background-color: #1ABE0F;
+    background-color: cornflowerblue;
     padding: 8px 13px 15px 11px;
     border-radius: 7px;
     display: inline-table;
@@ -592,7 +592,7 @@ position: fixed;
     margin-top: 6px;
     color: #fff;
     font-family: arial;
-    box-shadow: 1px 1px 3px 0px black;
+    box-shadow: 0px 0px 0px 0px;
 }
 
 .stickersDiv{
@@ -601,7 +601,7 @@ position: fixed;
 
 
 .childstickers{
-       background-color: #1ABDF2;
+          background-color: steelblue;
     padding: 8px 13px 15px 11px;
     border-radius: 7px;
     display: inline-table;
@@ -611,7 +611,7 @@ position: fixed;
     margin-top: 6px;
     color: #fff;
     font-family: arial;
-    box-shadow: 1px 1px 3px 0px black;
+    box-shadow: 1px 1px 1px 1px;
 
 }
 
@@ -630,12 +630,30 @@ position: fixed;
 
 
  .recommendeditems-hover{
-    
-      background-color: #fff;
+    background-color: #f3f3f3;
     position: fixed;
     z-index: 10;
-    box-shadow: 0px 1px 2px 2px;
+    box-shadow: 0px 1px 1px 1px;
     padding: 4px 10px 8px 11px;
     top: 118px;
     margin-left: 155px;
+    border-radius: 3px;
+}
+
+
+.item-hover{
+font-family: arial;
+padding: 9px 39px 7px 37px
+
+}
+
+
+.delete-btn{
+    
+max-width: 14px;
+    position: relative;
+    float: right;
+    top: -5px;
+    right: -4px;
+    cursor: pointer
 }
