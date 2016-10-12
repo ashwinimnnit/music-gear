@@ -38,7 +38,6 @@ var MyItems = React.createClass({
        IsEditClicked: true,
        itemtoupdate: temp
      })
-    
   },
 
    itemlisting: function() {

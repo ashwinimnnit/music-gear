@@ -11,7 +11,11 @@ h2 {
 
  .update-form {
 	background-color: #f3f3f3;
-    padding: 10px 0 6px 55px;
+    padding: 18px 0 8px 42px;
+    position: relative;
+    right: 4%;
+    top: 11px;
+    box-shadow: 1px 0px 11px 0px #c2c2c2;
 }
 
 input[type = "text"] {
@@ -27,11 +31,15 @@ input[type = "text"] {
 }
 
 .item-list {
-   margin-left: 10%;
+        margin-left: 18%;
     position: relative;
     top: 134px;
-    width: 80%;
-    z-index:1
+    width: 55%;
+    z-index: 1;
+    background-color: ghostwhite;
+    padding: 11px 13px 133px 73px;
+    box-shadow: 0px 3px 5px 0px #c3c3c3;
+    border-radius: 6px;
 }
 
 hr {
@@ -221,7 +229,7 @@ input[type = "file"]{
     border-width: medium 1px 1px;
     box-shadow: 6px 5px 25px -9px;
     float: left;
-    left: 289px;
+    left: 352px;
     list-style-type: none;
     position: fixed;
     top: 109px;
@@ -360,14 +368,13 @@ ul {
 }
 
 .recom-div{
-   display: inline-flex;
     padding: 32px 0 198px;
     position: relative;
 }
 
 
 .recom-itms{
-   background: #6e6e6e none repeat scroll 0 0;
+   background: whitesmoke;
     box-shadow: 5px 4px 14px 0;
     padding: 27px 35px 27px 41px;
     position: relative;
@@ -379,14 +386,15 @@ ul {
 }
 
 .fo-ban{
-     background: #6e6e6e none repeat scroll 0 0;
-    box-shadow: 63px 88px 103px 0;
+   background: whitesmoke;
+    box-shadow: 0px 0px 1px 1px #c2c2c2;
     color: #ffff;
     font-family: arial;
     font-size: 23px;
-    padding: 15px 0 16px 314px;
+    padding: 15px 0 16px 374px;
     position: relative;
-    top: 30px
+    top: 30px;
+    color: #757574;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
  .search-img {
@@ -427,8 +435,8 @@ ul {
   top:10px;
 }
 .recom-itms{
-   background: #6e6e6e none repeat scroll 0 0;
-    box-shadow: 5px 4px 14px 0;
+  background: whitesmoke;
+    box-shadow: 0px 1px 1px 1px #c2c2c2;
     padding: 27px 35px 27px 60px;
     position: relative;
 }
@@ -444,12 +452,13 @@ li:hover{
 
 
 .admin{
-   position: fixed;
+  position: fixed;
     top: 86px;
     float: left;
     left: 21%;
-    background-color: #ECF0EE;
-    width: 57%;
+    background-color: ghostwhite;
+    width: 70%;
+    padding: 1px 0 185px 6px;
 }
 
 .admin-action-itms{
@@ -478,7 +487,7 @@ li:hover{
 
 
 .all-items{
-     background-color: #f3f3f3;
+     background-color: ghostwhite;
     color: #757574;
     padding: 15px 19px 23px 23px;
     max-height: 629px;
@@ -496,7 +505,7 @@ li:hover{
     
     display: inline-block;
     float: left;
-    left: 47%;
+    left: 56%;
     position: fixed;
     top: 80px;
     width: 28%;
@@ -518,7 +527,7 @@ li:hover{
 position: relative;
     top: -618px;
     float: left;
-    left: 45.6%;
+    left: 49.4%;
     box-shadow: -1px 5px 21px -4px;
     width: 312px;
 }
@@ -531,4 +540,102 @@ padding: 5px 6px 11px 5px;
     color: #757574;
     font-family: arial;
     cursor: pointer
+}
+
+
+.item-recommendedItems{
+ 
+position: fixed;
+    top: 420px;
+    float: left;
+    left: 45.9%;
+    width: 45.2%;
+    height: 434px;
+    border: 1px solid #c2c2c2;
+}
+
+.item-recommendedItems > form > hr
+
+{
+     position: relative;
+    top: -7px;
+}
+
+.adminbtn
+{
+ border: 1px solid #c3c3c3;
+    cursor: pointer;
+    float: right;
+    padding: 8px;
+    position: fixed;
+    right: 9%;
+    top: 83%;
+}
+
+
+.parent-itm{
+    width: 100%;
+    height: 151px;
+    position: relative;
+    padding: 0px 5px 4px 0px;
+    overflow-y: scroll; 
+}
+
+.stickers{
+       background-color: #1ABE0F;
+    padding: 8px 13px 15px 11px;
+    border-radius: 7px;
+    display: inline-table;
+    position: relative;
+    float: left;
+    margin-left: 7px;
+    margin-top: 6px;
+    color: #fff;
+    font-family: arial;
+    box-shadow: 1px 1px 3px 0px black;
+}
+
+.stickersDiv{
+ display: inline
+}
+
+
+.childstickers{
+       background-color: #1ABDF2;
+    padding: 8px 13px 15px 11px;
+    border-radius: 7px;
+    display: inline-table;
+    position: relative;
+    float: left;
+    margin-left: 7px;
+    margin-top: 6px;
+    color: #fff;
+    font-family: arial;
+    box-shadow: 1px 1px 3px 0px black;
+
+}
+
+.update-form:focus { 
+    background-color: red;
+
+}
+
+.itm > span
+{
+   position: relative;
+    cursor: pointer;
+    color: blue;
+    margin-left: 13px;
+}
+
+
+ .recommendeditems-hover{
+    
+      background-color: #fff;
+    position: fixed;
+    z-index: 10;
+    box-shadow: 0px 1px 2px 2px;
+    padding: 4px 10px 8px 11px;
+    top: 118px;
+    margin-left: 155px;
 }

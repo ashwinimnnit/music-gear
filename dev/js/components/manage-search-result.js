@@ -3,13 +3,12 @@ import axios from "axios"
 
 var AdminSearch = React.createClass({
  
- getInitialState: function() {
-    return { 
+   getInitialState: function() {
+      return { 
       searchresult: "",
       issuggestionArrived: false
-    } 
- },
-
+     } 
+   },
 
   searchBox: function(){
     return(
@@ -18,7 +17,7 @@ var AdminSearch = React.createClass({
       </div>
     )
 
-  },
+   },
 
     search: function(e){
     var url = "http://localhost:4000/search.json"
@@ -35,10 +34,10 @@ var AdminSearch = React.createClass({
    	   })
    },
 
-   handleCheckBox: function(e){
-    console.log(e.target)
 
-
+   stickersGenerator: function(e){
+    this.props.recommendedItemStickers(e) 
+    
    },
 
    listingSuggestion: function(){
@@ -48,7 +47,7 @@ var AdminSearch = React.createClass({
        array.push(
         <li key = {data[i].id} >
         <input type="checkbox" name = {data[i].title}
-               value= {data[i].id} onClick={this.handleCheckBox}/>
+               value= {data[i].id} onClick={this.stickersGenerator}/>
          {data[i].title}</li>
        	)
 
@@ -61,10 +60,8 @@ var AdminSearch = React.createClass({
 
  render: function(){
  	if(this.state.issuggestionArrived && this.state.searchresult != null){
- 		console.log("in if")
- 		console.log(this.state.searchresult.length)
  	return (
-      <div className="ash">
+      <div >
         {this.searchBox()}
         {this.listingSuggestion()}
       </div>
