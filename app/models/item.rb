@@ -2,8 +2,8 @@
 class Item < ActiveRecord::Base
   has_many :images, as: :imageable
   belongs_to :user_profile
-  has_many :recommend_items_mapping, class_name: 'RecommendItem', dependent: :destroy,
-                                     foreign_key: 'item_id'
+  has_many :recommend_items, class_name: 'RecommendItem', dependent: :destroy,
+                             foreign_key: 'item_id'
   validates :title, :description, presence: true
   def self.display_item(param)
     response = {}
@@ -94,6 +94,7 @@ class Item < ActiveRecord::Base
     offset = params[:offset].to_i
     limit = params[:limit].to_i ||= 5
     statement = dynamic_sql_statement(params.except(:offset, :limit).values)
-    Item.select(statement).offset(offset).limit(limit)
+    items = Item.select(statement).offset(offset).limit(limit)
+    RecommendItem.find_recommended_items items
   end
 end
