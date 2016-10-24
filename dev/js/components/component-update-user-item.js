@@ -10,7 +10,7 @@ var UpdateUserItem = React.createClass({
     };
   },
 
-  handleUpdate: function(){
+  handleUpdate: function() {
     fd.append("item[title]" , document.getElementById("title").value)
     fd.append("item[description]", document.getElementById("description").value)
    	var self = this;
@@ -31,7 +31,6 @@ var UpdateUserItem = React.createClass({
   setImageparams: function(e){
     fd.append("image["+e.target.id+"]", 
  			   document.getElementById(e.target.id).files[0]);
-
   },
 
   imageUpdation: function(){
@@ -70,9 +69,8 @@ var UpdateUserItem = React.createClass({
  	        <input type = "button" value = "Update"
  	               onClick ={this.handleUpdate} id = {item.id} />	       
  	       </form>
- 	)
+ 	  )
   },
-
 
   render: function() {
       return(this.editForm())

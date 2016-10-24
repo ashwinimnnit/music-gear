@@ -399,9 +399,18 @@ ul {
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
  .search-img {
 
- max-height:47px;
-  top:38px;
+   max-height: 47px;
+    top: 19px;
     position: relative;
+    float: right;
+    right: 70px;
+}
+
+.spinner-img{
+        max-width: 48px;
+    float: right;
+    right: 72px;
+    top: 25px;
 }
 
  .search-list{
@@ -415,8 +424,8 @@ ul {
     background-color: #fff;
     z-index:100;
     float:left;
-  left:351px;
-  top:110px;
+  left:316px;
+  top:90px;
   width:41.8%;
  }
 
