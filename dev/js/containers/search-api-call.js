@@ -4,9 +4,9 @@ import SearchApiCall from "../actions/get-user-search-result";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Router, Route, Link, NavLink, browserHistory, IndexRoute  } from 'react-router'
+import DisplayItemAction from "../actions/display-item"
 
 var UserSearchResult = React.createClass({ 
-
 
   searchBox: function(){
      return(<div className="divsearchbar">
@@ -29,8 +29,9 @@ var UserSearchResult = React.createClass({
       return(<div></div>)
     }
   },
-  
+ 
   suggestionList: function(){
+    var self = this
     var suggestionList = this.props.list.payload
     var list = []
      if (suggestionList == null){
@@ -38,25 +39,39 @@ var UserSearchResult = React.createClass({
       }
      else if (suggestionList.length > 0 ){
        suggestionList.map(function(item){
-       list.push(<li key={item.id} className ="sugg-list">
-       <Link to={"/item/"+item.id}>
+       list.push(<li key={item.id} className ="sugg-list"
+        onClick={self.getItemonclick.bind(self, item)}>
+       <Link to={"/item/"+item.id} >
           {item.title}</Link></li>)
        })
        return (<ul className ="search-list"> {list}</ul>)
      }
   },
-
+  
+  getItemonclick: function(item){
+    var self = this;
+    axios.get("http://localhost:4000/items/"+item.id+".json")
+      .then(function (response) { 
+        self.props.displayItemAction(response.data.item)
+      })
+  },
 
   render: function(){
    return (
-      <div> {this.searchBox()} {this.suggestionList()} </div>
+      <div>
+      {this.searchBox()} {this.suggestionList()} 
+      </div>
    	)
   }
 
 })
 
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({searchApiCall: SearchApiCall}, dispatch) 
+  return bindActionCreators({
+    searchApiCall: SearchApiCall,
+    displayItemAction: DisplayItemAction
+
+  }, dispatch) 
 }
 
 function mapStateToProps (state){

@@ -31,8 +31,7 @@ componentDidMount: function() {
     var self = this;
     axios.get("http://localhost:4000/items/"+this.props.params.itemid+".json")
       .then(function (response) { 
-        self.props.displayItemAction(response.data.item)	
-
+        self.props.displayItemAction(response.data.item)
       })
   },
 

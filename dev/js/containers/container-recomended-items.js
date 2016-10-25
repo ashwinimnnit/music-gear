@@ -22,8 +22,8 @@ var RecommendedItems = React.createClass({
    var items = this.props.recommendedItems
     for(var item in items){
        itemArr.push(<div className="recom-itms">
-        <img  className="recom-img" src={"http://localhost:4000/"+items[item].images[Object.keys(items[item].images)[0]]}/>
-        <div  className="recom-itm-title"> {items[item].title}</div></div>
+        <img  className = "recom-img" src={"http://localhost:4000/"+items[item].images[Object.keys(items[item].images)[0]]}/>
+        <div  className = "recom-itm-title"> {items[item].title}</div></div>
        )
     }
     return(<div className="recom-div">{itemArr}</div>)
