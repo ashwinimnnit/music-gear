@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 import SearchResult from "./search-result"
-//import TestReducer from "./test-reducer"
+import DisplayItem from "./reducer-show-item"
+import RecommendedItems from "./reducer-recommended-items"
 const allReducers = combineReducers({
 
-	searchResult: SearchResult
+	searchResult: SearchResult,
+	displayItem: DisplayItem,
+    recommendedItems: RecommendedItems
 })
-console.log("--------m in al reducer----------------")
 export default allReducers

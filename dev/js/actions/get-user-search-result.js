@@ -2,7 +2,6 @@ import axios from "axios"
 
 
 export default function getUserSearchResult(e, dispatch){
-  console.log("hey m an action ",e.target.value)
     return function (dispatch){
       if (e.target.value != ""){
         fetchingData(e).then( function (response) {
@@ -34,7 +33,6 @@ function fetchingData(e) {
 }
 
 function fetchingDone(data){
-	console.log("doneFetching called")
   return {
    type: "FETCHING_DONE",
    payload: data
@@ -43,7 +41,6 @@ function fetchingDone(data){
 }
 
 function isFetching(){
-	console.log("isFetching called")
   return {
    type: "IS_FETCHING",
    payload: {},

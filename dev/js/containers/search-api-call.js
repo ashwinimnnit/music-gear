@@ -7,20 +7,6 @@ import { Router, Route, Link, NavLink, browserHistory, IndexRoute  } from 'react
 
 var UserSearchResult = React.createClass({ 
 
-  search: function(e){
-    var url = "http://localhost:4000/search.json"
-	var self = this
-	axios({
-      method: 'post',
-      url: url,
-      data:  {query: e.target.value  },
-   	}).then(function (response) {
-          console.log(response.data)
-
-       })
-  },
-   
- 
 
   searchBox: function(){
      return(<div className="divsearchbar">
@@ -70,14 +56,10 @@ var UserSearchResult = React.createClass({
 })
 
 function matchDispatchToProps(dispatch) {
-  console.log("------------matchDispatchToProps---------------")
-  return bindActionCreators({searchApiCall: SearchApiCall}, dispatch)
- 
+  return bindActionCreators({searchApiCall: SearchApiCall}, dispatch) 
 }
 
 function mapStateToProps (state){
-  console.log("mapstatetoprops---------------------------")
-  console.log("current state is: ", state.searchResult)
     return {
         list: state.searchResult
     };

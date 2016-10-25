@@ -1,19 +1,15 @@
 import React from "react";
 import axios from "axios";
 import RecommendedItems from "./container-recomended-items"
+import DisplayItemAction from "../actions/display-item"
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 var ShowItemContainer = React.createClass({
 
- getInitialState: function() {
-    return { 
-      itemToDisplay:"",
-      flag: true
-    };
-  },
-
   displayItem: function(){
-    var images = this.state.itemToDisplay.image
-    var item = this.state.itemToDisplay
+    var images = this.props.itemToDisplay.payload.image
+    var item = this.props.itemToDisplay.payload
     var imageArr = []
       for(var img in images){
         imageArr.push(<img key= {images[img]} className = "item-img" src={"http://localhost:4000"+images[img]} className="item-images" />)
@@ -34,22 +30,35 @@ var ShowItemContainer = React.createClass({
 componentDidMount: function() {
     var self = this;
     axios.get("http://localhost:4000/items/"+this.props.params.itemid+".json")
-      .then(function (response) {   
-          self.setState({
-              itemToDisplay: response.data.item
-          });
+      .then(function (response) { 
+        self.props.displayItemAction(response.data.item)	
+
       })
   },
 
   render: function(){
-   return (
-   	<div>
-   	{this.displayItem()}
-   	<RecommendedItems parentItemId = {this.props.params.itemid}/>
-    </div>
-   	)
-  }
-
-
+   if (this.props.itemToDisplay.itemReceived){
+     return (
+   	    <div>
+   	       {this.displayItem()}
+   	       <RecommendedItems parentItemId = {this.props.params.itemid}/>
+        </div>
+   	 )
+   }
+   else {
+    	return(<div></div>)
+    }
+   } 
 })
-export default ShowItemContainer
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({displayItemAction: DisplayItemAction}, dispatch) 
+}
+
+function mapStateToProps (state){
+    return {
+        itemToDisplay: state.displayItem
+    };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(ShowItemContainer)

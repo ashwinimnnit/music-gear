@@ -1,8 +1,8 @@
 
-const initialState = {
- isFetching: false,
- payload: {}
-}
+ const initialState = {
+   isFetching: false,
+   payload: {}
+ }
 
 function searchResult(state =initialState, action) {
     if (typeof action.type != 'undefined') {
