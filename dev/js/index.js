@@ -30,11 +30,9 @@ render((
          component={ManageRecommendedItems}/>
         </Route>
         <Route path="/" component={UserProfile} >
+            <Route path="/item/:itemid" component={ShowItem} />
             <Route path="/myitems" component={MyItems} />
             <Route path="/additem" component={AddUserItem} /> 
-            <Route component={Search}>
-              <Route path="/item/:itemid" component={ShowItem} />
-            </Route>
         </Route>
     </Route>
   </Router>

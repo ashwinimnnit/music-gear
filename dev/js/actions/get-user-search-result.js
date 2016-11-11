@@ -1,10 +1,10 @@
 import axios from "axios"
 
-
-export default function getUserSearchResult(e, dispatch){
+export default function getUserSearchResult(value){
+  console.log("----------------m in action  ---", value)
     return function (dispatch){
-      if (e.target.value != ""){
-        fetchingData(e).then( function (response) {
+      if (value != ""){
+        fetchingData(value).then( function (response) {
         dispatch(fetchingDone(response.data.result))
         })
         dispatch(isFetching())  
@@ -23,12 +23,12 @@ function initialSate(){
   }
 }
 
-function fetchingData(e) {
+function fetchingData(value) {
     var url = "http://localhost:4000/search.json"
 	  return(axios({
         method: 'post',
         url: url,
-        data:  {query: e.target.value  },
+        data:  {query: value  },
       }))
 }
 

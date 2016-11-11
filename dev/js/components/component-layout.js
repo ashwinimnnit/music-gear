@@ -1,10 +1,9 @@
 import React from "react";
 import { Router, Route, Link } from 'react-router'
 
-
-
 var Layout = React.createClass({
-  
+
+
    header: function(){
     return(
     <div className = "header">   
@@ -15,7 +14,7 @@ var Layout = React.createClass({
           <li><Link to="/myitems" >My Items</Link></li>
           <li><Link to="/additem" > Add item</Link></li>
           <li><Link to="/admin" > Administration</Link></li>
-           <li><Link to="/" > Home</Link></li>
+          <li><Link to="/" > Home</Link></li>
         </ul>
       </div>
     </div>    
@@ -27,14 +26,13 @@ var Layout = React.createClass({
   render: function () {
    return(
     <div>
-    {this.header()}
-    {this.props.children}
+      {this.header()}
+      {this.props.children}
     </div>
-
-
    	)
   }
 
 })
+
 
 export default Layout

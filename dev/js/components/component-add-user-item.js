@@ -1,6 +1,7 @@
 import React from "react"
 import axios from "axios";
 require('../../scss/style.scss');
+require ('../../scss/react-select.scss')
 var textType = ["text", "textarea"]
 
 var AddUserItem = React.createClass({

@@ -28,14 +28,16 @@ var ShowItemContainer = React.createClass({
 
 
 componentDidMount: function() {
+  console.log("0000000000", this.props.params.itemid)
     var self = this;
     axios.get("http://localhost:4000/items/"+this.props.params.itemid+".json")
-      .then(function (response) { 
+      .then(function (response) {
         self.props.displayItemAction(response.data.item)
       })
   },
 
   render: function(){
+    console.log("----show container")
    if (this.props.itemToDisplay.itemReceived){
      return (
    	    <div>

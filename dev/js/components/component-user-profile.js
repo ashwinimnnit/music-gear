@@ -6,13 +6,7 @@ require('../../scss/style.scss');
 import { Router, Route, Link } from 'react-router'
 
 var UserProfile = React.createClass({
- /* getInitialState: function() {
-    return { 
-      isUpdateClick: false,
-      isAddItemClicked: false,
-      isHomePage: true
-    };
-  },*/
+
    
   searchBox: function(){
       return(<SearchItems/>)

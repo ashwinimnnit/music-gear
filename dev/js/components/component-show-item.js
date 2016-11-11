@@ -7,7 +7,7 @@ render: function(){
   return(
     <div className="item-desc-wrapper">
      <ShowItemContainer params = {this.props.params} />
-  </div>
+   </div>
   )
 }
 
