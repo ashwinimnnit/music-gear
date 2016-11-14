@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export default function getUserSearchResult(value){
-  console.log("----------------m in action  ---", value)
+  console.log("action get usersearch ", value)
     return function (dispatch){
       if (value != ""){
         fetchingData(value).then( function (response) {
@@ -15,11 +15,12 @@ export default function getUserSearchResult(value){
     }
 }
 
-function initialSate(){
+/*function initialSate(){
   return {
   	type: "INIT_STATE",
   	isFetching: false,
-    payload: {}
+    payload: {} 
+
   }
 }
 
@@ -46,4 +47,4 @@ function isFetching(){
    payload: {},
    isFetching: true
   }
-}
+}*/

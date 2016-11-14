@@ -7,6 +7,7 @@ import RecommendedItemAction from "../actions/recommended-item-action"
 var RecommendedItems = React.createClass({
  
   componentDidMount: function(){
+    console.log("***************componenedidmount")
    var self = this
    var url = "http://localhost:4000/items/"+this.props.parentItemId+"/recommended_item.json"
    axios({
@@ -17,6 +18,7 @@ var RecommendedItems = React.createClass({
    	   })
   },
 
+ 
   displayRecomendedItem: function(){
    var itemArr = []
    var items = this.props.recommendedItems
@@ -36,11 +38,11 @@ var RecommendedItems = React.createClass({
   	      <div className="fo-ban"> You might also like these</div> 
   		        {this.displayRecomendedItem()}
   	     </div>
-  	)
+  	   )
     }
     else{
       return(
-         <div></div>
+         <div> No recommended items </div>
         )
     }
   }

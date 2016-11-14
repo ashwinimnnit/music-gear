@@ -42,7 +42,6 @@ componentDidMount: function() {
      return (
    	    <div>
    	       {this.displayItem()}
-   	       <RecommendedItems parentItemId = {this.props.params.itemid}/>
         </div>
    	 )
    }

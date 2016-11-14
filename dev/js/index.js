@@ -12,7 +12,7 @@ import { Router, Route, Link , browserLocation, browserHistory} from 'react-rout
 import Admin from "./components/component-admin"
 import ManageRecommendedItems from "./components/manage-recommended-items"
 import {createStore, applyMiddleware} from "redux" 
-import allReducers from "./reducers/index"
+import allReducers from "./reducers/store"
 import thunk from 'redux-thunk';
 
 const store = createStore(allReducers,
@@ -25,15 +25,16 @@ render((
   <Provider store={store}>
   <Router history={browserHistory}>
     <Route  component={Layout} >
+    <Route componenet = {Search}/>
         <Route path="/admin" component={Admin} >
         <Route path ="/admin/manage-recomeded-items"
          component={ManageRecommendedItems}/>
         </Route>
-        <Route path="/" component={UserProfile} >
+        <Route path="/" component={UserProfile} />
             <Route path="/item/:itemid" component={ShowItem} />
             <Route path="/myitems" component={MyItems} />
             <Route path="/additem" component={AddUserItem} /> 
-        </Route>
+        
     </Route>
   </Router>
   </Provider>
