@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 var ShowItemContainer = React.createClass({
 
   displayItem: function(){
+
     var images = this.props.itemToDisplay.payload.image
     var item = this.props.itemToDisplay.payload
     var imageArr = []
@@ -26,22 +27,22 @@ var ShowItemContainer = React.createClass({
    )
  },
 
-
+// execute on page load
 componentDidMount: function() {
-  console.log("0000000000", this.props.params.itemid)
+  console.log("show item didmount")
     var self = this;
-    axios.get("http://localhost:4000/items/"+this.props.params.itemid+".json")
+    axios.get("http://localhost:4000/items/"+this.props.itemId+".json")
       .then(function (response) {
         self.props.displayItemAction(response.data.item)
       })
   },
 
   render: function(){
-    console.log("----show container")
    if (this.props.itemToDisplay.itemReceived){
      return (
    	    <div>
    	       {this.displayItem()}
+           <RecommendedItems parentItemId = {this.props.itemId}/>
         </div>
    	 )
    }
@@ -56,6 +57,7 @@ function matchDispatchToProps(dispatch) {
 }
 
 function mapStateToProps (state){
+  console.log("show item container", state.displayItem)
     return {
         itemToDisplay: state.displayItem
     };

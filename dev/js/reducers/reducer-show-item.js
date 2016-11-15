@@ -4,6 +4,10 @@ export default function displayItemReducer(state = {}, action){
        return action
        break;
       }
+      case "CLEAR_ITEM_FROM_STORE": {
+       return action
+       break;
+      }
 	}
 
   return state

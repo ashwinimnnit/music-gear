@@ -3,9 +3,17 @@ require('../../scss/style.scss');
 import UserSearchContainer from "../containers/search-container"
 
 var Search = React.createClass({
+
   render: function(){
+  	
+  	if (typeof this.props.params== "undefined"){
+  		var itemId = 0 
+  	}
+  	else {
+  		var itemId = this.props.params.itemid 
+  	}
 	    return(<div>
-               <UserSearchContainer/> 
+               <UserSearchContainer itemId = {itemId}/> 
              </div>
 	    )
   }

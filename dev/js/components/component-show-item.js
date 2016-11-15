@@ -6,7 +6,7 @@ var ShowItem = React.createClass({
 render: function(){
   return(
     <div className="item-desc-wrapper">
-     <ShowItemContainer params = {this.props.params} />
+     <ShowItemContainer params = {this.props.params.itemid} />
    </div>
   )
 }

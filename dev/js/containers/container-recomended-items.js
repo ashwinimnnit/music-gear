@@ -6,16 +6,17 @@ import RecommendedItemAction from "../actions/recommended-item-action"
 
 var RecommendedItems = React.createClass({
  
-  componentDidMount: function(){
-    console.log("***************componenedidmount")
+  componentWillMount: function(){
+    console.log("===componentWillReceiveProps")
    var self = this
    var url = "http://localhost:4000/items/"+this.props.parentItemId+"/recommended_item.json"
    axios({
       method: 'get',
       url: url,
-   	}).then(function (response) {
+    }).then(function (response) {
         self.props.recommendedItemAction(response.data.recommended_itmes)
-   	   })
+       })
+   
   },
 
  
@@ -32,19 +33,12 @@ var RecommendedItems = React.createClass({
   },
 
   render: function(){
-    if (Object.keys(this.props.recommendedItems).length > 0){
   	   return(
   	     <div>
   	      <div className="fo-ban"> You might also like these</div> 
   		        {this.displayRecomendedItem()}
   	     </div>
   	   )
-    }
-    else{
-      return(
-         <div> No recommended items </div>
-        )
-    }
   }
 
 })

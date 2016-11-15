@@ -1,18 +1,20 @@
 import React from "react";
 import SearchApiCall from "../actions/get-user-search-result";
 import DisplayItemAction from "../actions/display-item";
+import RecommendedItems from "./container-recomended-items"
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Select from 'react-select';
 import axios from "axios"
-
+import { Router, Route, Link } from 'react-router'
+import ShowItemDetails from "./container-show-item"
 
 var UserSearch = React.createClass({
 
   getInitialState: function(){
     return {
-    showItemDetailFlag: false
-  }
+      showItemDetailFlag: false
+    }
   },
 
   searchBox: function(){
@@ -55,60 +57,31 @@ var UserSearch = React.createClass({
     return array
   },
 
-  displayItem: function(){
-    console.log("****", this.props.itemToDisplay)
-    var images = this.props.itemToDisplay.payload.image
-    var item = this.props.itemToDisplay.payload
-    var imageArr = []
-      for(var img in images){
-        imageArr.push(<img key= {images[img]} className = "item-img" src={"http://localhost:4000"+images[img]} className="item-images" />)
-      }
-      return(
-     <div className= "item-desc"> 
-     <h2> 
-      {item.title}
-      </h2>
-      <div> {item.description}</div>
-      <div className="divitem-img"> {imageArr}</div>
-      <div className ="raise-btn"> Send Rent Request</div>
-    </div>
-   )
- },
-
   handleOnChange: function (value) {
-    this.setState({itemId: value.value})
-    window.history.pushState("", "", "/item/"+value.value+"");
-    var self = this;
+   this.setState({itemId: value.value})
+   window.history.pushState("", "", "/item/"+value.value+"");
+   var self = this;
     axios.get("http://localhost:4000/items/"+value.value+".json")
       .then(function (response) {
-        self.props.displayItemAction(response.data.item)
-         self.setState({showItemDetailFlag: true})
+         self.props.displayItemAction(response.data.item)
+         
       })
    },
 
    render: function(){
-    console.log("search -box render")
-    if (this.state.showItemDetailFlag){
       return (
         <div>
           {this.searchBox()}
-          <div className = "item-desc-wrapper">
-           {this.displayItem()}
-           </div>
-        </div>
-        )
-    }
-    else {
-      return (
-        <div>
-          {this.searchBox()}
+          <div className= "item-desc-wrapper">
+          < ShowItemDetails itemId= {this.props.itemId}/>
+          </div>
         </div>
       )
-    }
   }
 })
 
 function matchDispatchToProps(dispatch) {
+
   return bindActionCreators({displayItemAction: DisplayItemAction}, dispatch) 
 }
 
