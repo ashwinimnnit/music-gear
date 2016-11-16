@@ -1,3 +1,6 @@
+
+// this action is not in use, after react select implemnetaion
+
 import axios from "axios"
 
 export default function getUserSearchResult(value){

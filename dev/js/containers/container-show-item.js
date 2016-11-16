@@ -35,7 +35,7 @@ componentDidMount: function() {
       .then(function (response) {
         self.props.displayItemAction(response.data.item)
       })
-  },
+},
 
   render: function(){
    if (this.props.itemToDisplay.itemReceived){

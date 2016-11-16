@@ -8,12 +8,15 @@ import Select from 'react-select';
 import axios from "axios"
 import { Router, Route, Link } from 'react-router'
 import ShowItemDetails from "./container-show-item"
+import RecommendedItemAction from "../actions/recommended-item-action"
+
 
 var UserSearch = React.createClass({
 
   getInitialState: function(){
     return {
-      showItemDetailFlag: false
+      showItemDetailFlag: false,
+      itemId: this.props.itemId
     }
   },
 
@@ -64,7 +67,7 @@ var UserSearch = React.createClass({
     axios.get("http://localhost:4000/items/"+value.value+".json")
       .then(function (response) {
          self.props.displayItemAction(response.data.item)
-         
+         self.props.recommendedItemAction(value.value)
       })
    },
 
@@ -73,7 +76,7 @@ var UserSearch = React.createClass({
         <div>
           {this.searchBox()}
           <div className= "item-desc-wrapper">
-          < ShowItemDetails itemId= {this.props.itemId}/>
+          < ShowItemDetails itemId= {this.state.itemId} />
           </div>
         </div>
       )
@@ -82,7 +85,10 @@ var UserSearch = React.createClass({
 
 function matchDispatchToProps(dispatch) {
 
-  return bindActionCreators({displayItemAction: DisplayItemAction}, dispatch) 
+  return bindActionCreators({ displayItemAction: DisplayItemAction,
+                              recommendedItemAction: RecommendedItemAction},
+                              dispatch
+                            ) 
 }
 
 function mapStateToProps (state){

@@ -6,20 +6,10 @@ import RecommendedItemAction from "../actions/recommended-item-action"
 
 var RecommendedItems = React.createClass({
  
-  componentWillMount: function(){
-    console.log("===componentWillReceiveProps")
-   var self = this
-   var url = "http://localhost:4000/items/"+this.props.parentItemId+"/recommended_item.json"
-   axios({
-      method: 'get',
-      url: url,
-    }).then(function (response) {
-        self.props.recommendedItemAction(response.data.recommended_itmes)
-       })
-   
+  componentDidMount: function(){
+   this.props.recommendedItemAction(this.props.parentItemId)
   },
 
- 
   displayRecomendedItem: function(){
    var itemArr = []
    var items = this.props.recommendedItems
@@ -43,9 +33,6 @@ var RecommendedItems = React.createClass({
 
 })
 
-export default connect(mapStateToProps, matchDispatchToProps)(RecommendedItems);
-
-
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({recommendedItemAction: RecommendedItemAction}, dispatch) 
 }
@@ -56,5 +43,4 @@ function mapStateToProps (state){
     };
 }
 
-
-
+export default connect(mapStateToProps, matchDispatchToProps)(RecommendedItems);
