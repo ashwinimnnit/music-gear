@@ -21,11 +21,11 @@ var UpdateUserItem = React.createClass({
       processData: false,
       contentType: false,
       data:  fd,
-   	}).then(function (response) { 
+   	}).then(function (response) {
          self.props.onItemUpdation(response.data.msg.item)
        }).catch(function (error) {
      	    alert("some error occured");
-          });;
+      });;
   },	
 
   setImageparams: function(e){
@@ -34,6 +34,7 @@ var UpdateUserItem = React.createClass({
   },
 
   imageUpdation: function(){
+    console.log("imageupdattion", this.props.itemtoupdate)
     var item = this.props.itemtoupdate
     var  arr = []
     for (var thumbId in item.thumbnail){
@@ -50,25 +51,26 @@ var UpdateUserItem = React.createClass({
 
 
    editForm: function() {
+    console.log("imageupdattion", this.props.itemtoupdate)
     var item = this.props.itemtoupdate
     return(
-    	   <form className = "update-form" id ="update-form"
-                 accept = "image/gif,image/jpeg, image/png" 
-                 encType = "multipart/form-data">
+    	  <form className = "update-form" id ="update-form"
+              accept = "image/gif,image/jpeg, image/png" 
+              encType = "multipart/form-data">
 
- 	          <input type="text" placeholder="title..." id = "title"
- 	                 name = "title" defaultValue ={item.title} /> 
+ 	        <input type="text" placeholder="title..." id = "title"
+ 	               name = "title" defaultValue ={item.title} /> 
  	        <div>
- 	          <textarea type="text" placeholder="description" id = "description"
- 	                    defaultValue = {item.description} 
- 	                    name = "description"/>
+ 	        <textarea type="text" placeholder="description" id = "description"
+ 	                  defaultValue = {item.description} 
+ 	                  name = "description"/>
  	        </div>
  	        <div>   
  	         {this.imageUpdation()}
  	        </div>
  	        <input type = "button" value = "Update"
  	               onClick ={this.handleUpdate} id = {item.id} />	       
- 	       </form>
+ 	      </form>
  	  )
   },
 

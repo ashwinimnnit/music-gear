@@ -15,7 +15,6 @@ var UserSearch = React.createClass({
 
   getInitialState: function(){
     return {
-      showItemDetailFlag: false,
       itemId: this.props.itemId
     }
   },
@@ -61,9 +60,9 @@ var UserSearch = React.createClass({
   },
 
   handleOnChange: function (value) {
-   this.setState({itemId: value.value})
+   var self = this
    window.history.pushState("", "", "/item/"+value.value+"");
-   var self = this;
+   this.setState({itemId: value.value})
     axios.get("http://localhost:4000/items/"+value.value+".json")
       .then(function (response) {
          self.props.displayItemAction(response.data.item)
@@ -98,6 +97,5 @@ function mapStateToProps (state){
         itemToDisplay: state.displayItem
     };
 }
-
 
 export default connect(mapStateToProps, matchDispatchToProps)(UserSearch)

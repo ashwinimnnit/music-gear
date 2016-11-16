@@ -5,8 +5,6 @@ export default function (itemid){
    return function (dispatch){
       if (itemid != ""){
         fetchingData(itemid).then( function (response) {
-         console.log("after success ", response.data.recommended_itmes)
-
         dispatch(fetchingDone(response.data.recommended_itmes))
         })
         dispatch(isFetching())  

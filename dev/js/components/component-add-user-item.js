@@ -19,7 +19,6 @@ var AddUserItem = React.createClass({
 	  return(<div className="add-itm-div">{browseButton}</div>)
   },
 
- 
 
   // post user data
   postUserDeatils: function() {
