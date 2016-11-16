@@ -41,6 +41,7 @@ class ItemsController < ApplicationController
   end
 
   def search
+    #sleep(1)
     @search_response = Item.search_items(params[:query]) unless params[:query].empty?
   end
 
