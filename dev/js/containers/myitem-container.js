@@ -32,13 +32,13 @@ var MyItemsContainer = React.createClass({
           
       var item_images = user_item[itemId].images
       for(var img_path in item_images) {
-        indents.push(<div className ="itm-up" >
+        indents.push(<div className ="itm-up" key = {img_path}>
                      <img src={"http://localhost:4000"+item_images[img_path]} className="item-images"
                           id={"itmimg-"+img_path} onMouseOver = {this.mouseOver}  />
                      </div>   
         )
       }
-        indents.push(<div className ="desc"> 
+        indents.push(<div className ="desc" > 
                           {user_item[itemId].description}
                      </div>
         )
@@ -61,7 +61,6 @@ var MyItemsContainer = React.createClass({
   },
   
    onItemUpdation: function(updateItem){
-   	console.log("on itemupdation", updateItem)
   	var id = updateItem.id
   	var temp = this.props.myitems
   	temp[id] = updateItem
@@ -105,7 +104,6 @@ function matchDispatchToProps(dispatch) {
 }
 
 function mapStateToProps (state){
-  console.log("***************show item container****", state.myitems)
     return {
         myitems: state.myitems
     };

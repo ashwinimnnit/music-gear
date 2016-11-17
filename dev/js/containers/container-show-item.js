@@ -55,7 +55,6 @@ function matchDispatchToProps(dispatch) {
 }
 
 function mapStateToProps (state){
-  console.log("***************show item container****", state.displayItem)
     return {
         itemToDisplay: state.displayItem
     };

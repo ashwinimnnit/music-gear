@@ -91,7 +91,6 @@ function matchDispatchToProps(dispatch) {
 }
 
 function mapStateToProps (state){
-  console.log("mapto sate prp-----", state.displayItem)
     return {
         list: state.searchResult,
         itemToDisplay: state.displayItem
