@@ -5,6 +5,7 @@ import MyItemsActionCreator from "../actions/get-myitems"
 import UpdateUserItem from "../components/component-update-user-item"
 import UpdateMyItem from "../actions/update-my-items"
 import {connect} from 'react-redux';
+import $ from "jquery"
 
 var MyItemsContainer = React.createClass({
 
@@ -26,11 +27,11 @@ var MyItemsContainer = React.createClass({
     var itemdiv = []
     for( var itemId in user_item) {
       var indents = [];
-      if (!this.state.IsEditClicked) {
+      //if (!this.state.IsEditClicked) {
         indents.push(<h4  key = {user_item[itemId].id} className ="itm-title">
                      {user_item[itemId].title}</h4>)
          
-      }  
+      //}  
       var item_images = user_item[itemId].images
       for(var img_path in item_images) {
         indents.push(<div className ="itm-up" >
@@ -39,16 +40,16 @@ var MyItemsContainer = React.createClass({
                      </div>   
         )
       }
-      if (!this.state.IsEditClicked) {
+      //if (!this.state.IsEditClicked) {
         indents.push(<div className ="desc"> 
                           {user_item[itemId].description}
                      </div>
         )
-      }
+      //}
       indents.push(<div>
-                   <button className="btn ed" type="button"
+                   <div className="btn ed" type="button"
                            onClick={this.handleEdit.bind(this, itemId)} id ={itemId} > 
-                           Edit Item</button>
+                           Edit Item</div>
                    <br/></div>
       )
       itemdiv.push(<div rel={itemId}>
@@ -56,7 +57,7 @@ var MyItemsContainer = React.createClass({
                    </div>
       )
       if (this.state.itemtoupdate.id == itemId) {
-        itemdiv.push(this.geteditform())                      
+        itemdiv.push(this.geteditform())                
       }
       itemdiv.push(<hr/>)
     }
@@ -85,7 +86,7 @@ var MyItemsContainer = React.createClass({
 
   
   geteditform: function() {
-    return (<div className = "edit-form" >
+    return (<div className = "edit-form" id = "edit-form">
             <UpdateUserItem itemtoupdate = {this.state.itemtoupdate} 
                             onItemUpdation = {this.onItemUpdation}/>
             </div>
@@ -94,7 +95,8 @@ var MyItemsContainer = React.createClass({
 
    render: function(){
      return (
-       <div> {this.itemlisting()}</div>
+       <div> {this.itemlisting()}
+       </div>
 
      )
    }
