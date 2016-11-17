@@ -27,11 +27,9 @@ var MyItemsContainer = React.createClass({
     var itemdiv = []
     for( var itemId in user_item) {
       var indents = [];
-      //if (!this.state.IsEditClicked) {
         indents.push(<h4  key = {user_item[itemId].id} className ="itm-title">
                      {user_item[itemId].title}</h4>)
-         
-      //}  
+          
       var item_images = user_item[itemId].images
       for(var img_path in item_images) {
         indents.push(<div className ="itm-up" >
@@ -40,12 +38,10 @@ var MyItemsContainer = React.createClass({
                      </div>   
         )
       }
-      //if (!this.state.IsEditClicked) {
         indents.push(<div className ="desc"> 
                           {user_item[itemId].description}
                      </div>
         )
-      //}
       indents.push(<div>
                    <div className="btn ed" type="button"
                            onClick={this.handleEdit.bind(this, itemId)} id ={itemId} > 
