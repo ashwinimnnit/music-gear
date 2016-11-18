@@ -2,7 +2,8 @@
 class AddressController < ApplicationController
   def index
     @user_profile = UserProfile.find_by_id(params[:user_profile_id])
-    @user_addresses = @user_profile.addresses
+    @user_addresses = @user_profile.addresses unless @user_profile.nil?
+    @addresses_with_phone_number = Address.user_phone_number(@user_addresses) unless @user_addresses.nil?
   end
 
   def update
