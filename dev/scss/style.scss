@@ -48,16 +48,17 @@ hr {
 }
 
 .header{
-	 background: rgba(12, 13, 14, 0.86) none repeat scroll 0 0;
+	background: #3498db;
     float: left;
-    height: 34px;
+    height: 53px;
     left: -8px;
     line-height: 1;
     padding: 7px 0 6px 16px;
     position: fixed;
     top: -8px;
     width: 100%;
-    z-index:100
+    z-index: 100;
+    box-shadow: 0px 3px 9px -2px #c4c4c4;
 }
 
 .my-item{
@@ -272,19 +273,20 @@ input[type = "file"]{
 }
 
 .select-span{
-     background-color: white;
-    color: black;
+        background-color: #3584d6;
+    color: white;
     font-family: arial;
-    padding: 5px 69px 4px 60px;
+    padding: 8px 67px 11px 55px;
     position: relative;
-    top: 14px;
-    cursor:pointer;
+    top: 27px;
+    cursor: pointer;
 }
 
 
 ul {
+    
     list-style-type: none;
-    padding: 8px 0 0 6px;
+    padding: 25px 0 0 8px;
 }
 
 .dropdown-content > ul> li{
@@ -686,4 +688,10 @@ max-width: 14px;
     font-family: arial;
     padding: 9px 12px 10px 15px;
     width: 10%;
+}
+
+
+.header-logo{
+    max-height: 59px;
+    margin-left: 25px;
 }

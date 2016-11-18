@@ -11,6 +11,7 @@ import ShowItem from "./components/component-show-item"
 import Layout from "./components/component-layout"
 import { Router, Route, Link , browserLocation, browserHistory} from 'react-router'
 import Admin from "./components/component-admin"
+import UserAddresses from "./components/user-addresses"
 import ManageRecommendedItems from "./components/manage-recommended-items"
 import {createStore, applyMiddleware} from "redux" 
 import allReducers from "./reducers/store"
@@ -27,6 +28,7 @@ render((
   <Router history={browserHistory}>
     <Route  component={Layout} >
     <Route path="/item/:itemid" component={Search} />
+     <Route path="/manage-my-addresses" component={UserAddresses} />
         <Route path="/admin" component={Admin} >
         <Route path ="/admin/manage-recomeded-items"
          component={ManageRecommendedItems}/>

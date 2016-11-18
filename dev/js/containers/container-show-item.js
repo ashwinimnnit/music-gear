@@ -12,30 +12,31 @@ var ShowItemContainer = React.createClass({
     var item = this.props.itemToDisplay.payload
     var imageArr = []
       for(var img in images){
-        imageArr.push(<img key= {images[img]} className = "item-img" src={"http://localhost:4000"+images[img]} className="item-images" />)
+        imageArr.push(<img key= {images[img]}
+                           src={"http://localhost:4000"+images[img]}
+                           className="item-images" />
+                     )
       }
       return(
-     <div className= "item-desc"> 
-     <h2> 
-      {item.title}
-      </h2>
-      <div> {item.description}</div>
-      <div className="divitem-img"> {imageArr}</div>
-      <div className ="raise-btn"> Send Rent Request</div>
-    </div>
-   )
- },
+        <div className= "item-desc"> 
+          <h2> {item.title}</h2>
+          <div> {item.description}</div>
+          <div className="divitem-img"> {imageArr}</div>
+          <div className ="raise-btn"> Send Rent Request</div>
+        </div>
+      )
+  },
 
-// execute on page load
-componentDidMount: function() {
+  // execute on page load
+  componentDidMount: function() {
     var self = this;
     axios.get("http://localhost:4000/items/"+this.props.itemId+".json")
       .then(function (response) {
         self.props.displayItemAction(response.data.item)
       })
-},
+  },
 
-  render: function(){
+  render: function() {
    if (this.props.itemToDisplay.itemReceived){
      return (
    	    <div>
@@ -47,16 +48,17 @@ componentDidMount: function() {
    else {
     	return(<div></div>)
     }
-   } 
+  }
+
 })
 
-function matchDispatchToProps(dispatch) {
+function matchDispatchToProps(dispatch){
   return bindActionCreators({displayItemAction: DisplayItemAction}, dispatch) 
 }
 
 function mapStateToProps (state){
     return {
-        itemToDisplay: state.displayItem
+      itemToDisplay: state.displayItem
     };
 }
 

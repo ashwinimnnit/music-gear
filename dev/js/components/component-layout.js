@@ -10,11 +10,12 @@ var Layout = React.createClass({
 
    header: function(){
     return(
-    <div className = "header">   
+    <div className = "header">
       <div className="dropdown">
         <span className="select-span">More</span>
         <div className="dropdown-content">
         <ul onClick = {this.props.clearItemAction}>
+          <li><Link to="/manage-my-addresses" > Manage Addresses</Link></li>
           <li><Link to="/myitems" >My Items</Link></li>
           <li><Link to="/additem" > Add item</Link></li>
           <li><Link to="/admin" > Administration</Link></li>
@@ -46,6 +47,5 @@ function matchDispatchToProps(dispatch) {
 }
 
 function mapStateToProps (state){
-    return {
-    };
+    return {};
 }
