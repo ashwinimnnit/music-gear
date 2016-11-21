@@ -695,3 +695,64 @@ max-width: 14px;
     max-height: 59px;
     margin-left: 25px;
 }
+
+
+.user-address{
+ background-color: #f2f2f2;
+    border-radius: 4px;
+    box-shadow: 0px 0px 18px -6px;
+    display: inline-flex;
+    font-family: arial;
+    margin-left: 25px;
+    padding: 33px 48px 30px 3px;
+    position: relative;
+    top: 51px;
+}
+
+.address{
+background-color: #e7e7e7;
+    margin-left: 31px;
+    padding: 20px 23px 33px;
+    position: relative;
+    
+}
+
+.row {
+    color: #212121;
+    padding: 11px 3px 6px;
+}
+
+.row > span {
+    
+    background-color: #f3f3f3;
+    padding: 5px 35px 7px 10px;
+    border-radius: 4px;
+}
+
+.edit-image-button{
+   max-width: 37px;
+    cursor: pointer;
+    position: relative;
+    float: right;
+    border-radius: 54px;
+    padding: 34px 0px 0px 0px;
+}
+
+.address > form > .row > input{
+    border: 0px;
+    padding: 4px;
+    background-color: ghostwhite;
+    padding: 11px 7px 7px 12px;
+    border-radius: 5px;
+    text-align: inherit;
+}
+
+.editable-form{
+    border: 1px solid #c2c2c2 !important;
+    padding: 4px !important;
+    background-color: ghostwhite !important;
+    padding: 11px 7px 7px 12px !important;
+    border-radius: 5px !important;
+    text-align: inherit !important; 
+
+}
