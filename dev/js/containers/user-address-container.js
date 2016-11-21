@@ -4,11 +4,25 @@ import {connect} from 'react-redux';
 import GetUserAddress from "../actions/get-user-address"
 
 var UserAddressesContainer = React.createClass({
-
+    getInitialState: function() {
+    return { 
+      IsEditClicked: false,
+      WhichFormIsClicked: ""
+    };
+  },
 
 	componentDidMount: function(){
 	  var userid = 1
       this.props.getUserAddress(userid)
+	},
+
+	updateButton: function(formId){
+      
+     if (this.state.IsEditClicked && (this.state.WhichFormIsClicked == "form-"+formId+"")){
+     	return (
+     		 <div className ="update-address"> Update </div>
+     	)
+     }
 	},
 
 	displayAddresss: function (){
@@ -42,6 +56,7 @@ var UserAddressesContainer = React.createClass({
                    <img src="http://localhost:3000/images/edit-image.jpg" 
                        className="edit-image-button" 
                        onClick = {this.displayEditableFields.bind(this, addressArray[address])}/>
+                      {this.updateButton(addressArray[address].id)}
                 </form>   
                 </div>
         		)
@@ -51,6 +66,9 @@ var UserAddressesContainer = React.createClass({
 	},
 
     displayEditableFields: function(userAddress){
+    	this.setState({IsEditClicked: true,
+    		            WhichFormIsClicked: "form-"+userAddress.id+""
+    	             })
         var form = document.getElementById("form-"+userAddress.id+"");
         var elements = form.elements;
          for (var i = 0, len = elements.length; i < len; ++i) {
