@@ -15,7 +15,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'yaml_db'
 gem 'will_paginate', '~> 3.1.0'
 gem 'react-rails'
-
+gem 'puma'
 # Used for imageupload
 gem "paperclip", "~> 5.0.0"
 
