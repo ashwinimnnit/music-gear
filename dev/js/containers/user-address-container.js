@@ -2,6 +2,7 @@ import React from "react";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import GetUserAddress from "../actions/get-user-address"
+import UpdateUserAddress from "../actions/update-user-address"
 
 var UserAddressesContainer = React.createClass({
     getInitialState: function() {
@@ -20,9 +21,19 @@ var UserAddressesContainer = React.createClass({
       
      if (this.state.IsEditClicked && (this.state.WhichFormIsClicked == "form-"+formId+"")){
      	return (
-     		 <div className ="update-address"> Update </div>
+     		 <div className ="update-address" onClick = {this.handleFormOnClick.bind(this, this.state.WhichFormIsClicked)}> Update </div>
      	)
      }
+	},
+
+	handleFormOnClick: function(formId){
+	  var dataToSend = {}
+      var formData = new FormData(document.getElementById(formId))
+      for(var pair of formData.entries()) {
+          dataToSend[pair[0]] = pair[1]
+       }
+       console.log("data to send ", dataToSend)
+       this.props.updateUserAddress(dataToSend)
 	},
 
 	displayAddresss: function (){
@@ -44,19 +55,24 @@ var UserAddressesContainer = React.createClass({
                 <div className = "row">
                   Street: <input type="text" name = "street" defaultValue = {addressArray[address].street} disabled />
                 </div>
+                <div className = "row">
+                  City: <input type="text" name = "city" defaultValue = {addressArray[address].city} disabled />
+                </div>
                 <div className = "row"> 
-                  State: <input type="text" name = "city" defaultValue = {addressArray[address].city} disabled />
+                  State: <input type="text" name = "state" defaultValue = {addressArray[address].state} disabled />
                 </div>
                 <div className = "row">
-                  Pin: <input type="text" name = "state" defaultValue = {addressArray[address].state} disabled />
+                  Pin: <input type="text" name = "pin" defaultValue = {addressArray[address].pin} disabled />
                 </div>
                 <div className = "row">
-                  Phone: <input type="text" name = "pin" defaultValue = {addressArray[address].pin} disabled />
+                  Phone: <input type="text" name = "phone_number" defaultValue = {addressArray[address].phone_number} disabled />
                 </div>
                    <img src="http://localhost:3000/images/edit-image.jpg" 
                        className="edit-image-button" 
                        onClick = {this.displayEditableFields.bind(this, addressArray[address])}/>
                       {this.updateButton(addressArray[address].id)}
+                      <input type = "hidden" name = "user_id" value = {addressArray[address].user_profile_id}/>
+                      <input type = "hidden" name = "phone_number_id" value = {addressArray[address].phone_number_id}/>
                 </form>   
                 </div>
         		)
@@ -89,7 +105,9 @@ export default connect(mapStateToProps, matchDispatchToProps)(UserAddressesConta
 
 function matchDispatchToProps(dispatch) {
 
-  return bindActionCreators({getUserAddress: GetUserAddress },dispatch) 
+  return bindActionCreators({getUserAddress: GetUserAddress,
+                             updateUserAddress: UpdateUserAddress
+                             },dispatch) 
 }
 
 function mapStateToProps (state){
