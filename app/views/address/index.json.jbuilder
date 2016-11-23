@@ -1,0 +1,1 @@
+json.addresses(@addresses_with_phone_number)

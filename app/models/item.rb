@@ -9,11 +9,14 @@ class Item < ActiveRecord::Base
     response = {}
     temp = {}
     item = find_by_id(param[:id].to_i)
-    item.images.each do |img|
-      temp[img.id] = "/system/#{img.imageable_type.downcase}/#{img.id}/medium/#{img.picture_file_name}"
+    unless item.nil?
+    item_images = item.images 
+      item_images.each do |img|
+        temp[img.id] = "/system/#{img.imageable_type.downcase}/#{img.id}/medium/#{img.picture_file_name}"
+      end
     end
     response[:item] = item.as_json
-    response[:item][:image] = temp
+    response[:item][:image] = temp unless response[:item].nil?
     response[:item]
   end
 
