@@ -47,7 +47,7 @@ var UserAddressesContainer = React.createClass({
                 <div key = {address} className = "address">
                 <form id = {"form-"+address+""}>
                 <div className = "row">
-                  Name: <input type="text" name = "name" defaultValue = "ashwini" disabled className ="disabled inputs"/>
+                  Name: <input type="text" name = "name" defaultValue = {addressArray[address].name} disabled className ="disabled inputs"/>
                 </div>
         		<div className = "row">
         		  House No: <input type="text" name = "house_no" defaultValue = {addressArray[address].house_no}  disabled />
