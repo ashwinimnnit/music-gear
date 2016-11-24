@@ -9,7 +9,7 @@ export default function getUserAddress(userid){
 }
 
 function fetchingData(userid){
-  var url = "http://localhost:4000/user_profile/"+userid+"/address.json"
+  var url = "http://rentmymusic.herokuapp.com/user_profile/"+userid+"/address.json"
   return (
     axios({
        method: "get",

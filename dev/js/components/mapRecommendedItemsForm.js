@@ -46,7 +46,7 @@ var DisplayMappedItems = React.createClass({
 
   submitForm: function(e){
     var formdata = new FormData(document.getElementById('admin-map-items'))
-    var url = "http://localhost:4000/apis/admin/map_recommended_items.json"
+    var url = "http://rentmymusic.herokuapp.com/apis/admin/map_recommended_items.json"
     var self = this
     axios({
       method: 'post',

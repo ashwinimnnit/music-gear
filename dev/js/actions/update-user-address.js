@@ -17,7 +17,7 @@ export default function updateUserAddress(userAddress){
 
 
 function sendDataToServer(useraddress){
-  var url = "http://localhost:4000/apis/user_address/update_user_address.json"
+  var url = "http://rentmymusic.herokuapp.com/apis/user_address/update_user_address.json"
   return(
   axios({
     method: "POST",
