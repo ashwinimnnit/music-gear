@@ -13,38 +13,41 @@
 
 ActiveRecord::Schema.define(version: 20161122094018) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
-    t.string   "house_no",        limit: 255
-    t.string   "street",          limit: 255
-    t.string   "city",            limit: 255
-    t.string   "state",           limit: 255
-    t.integer  "user_profile_id", limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "pin",             limit: 4
-    t.integer  "phone_number_id", limit: 4
-    t.string   "name",            limit: 255
+    t.string   "house_no"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "pin"
+    t.integer  "user_profile_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "phone_number_id"
+    t.string   "name"
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer  "imageable_id",         limit: 4
-    t.string   "imageable_type",       limit: 255
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.string   "picture_file_name",    limit: 255
-    t.string   "picture_content_type", limit: 255
-    t.integer  "picture_file_size",    limit: 4
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "title",           limit: 255
-    t.string   "description",     limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "user_profile_id", limit: 4
-    t.integer  "catagory_id",     limit: 4
-    t.integer  "price",           limit: 4
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_profile_id"
+    t.integer  "catagory_id"
+    t.integer  "price"
   end
 
   create_table "phone_numbers", force: :cascade do |t|
@@ -54,25 +57,25 @@ ActiveRecord::Schema.define(version: 20161122094018) do
   end
 
   create_table "recommend_items", force: :cascade do |t|
-    t.integer  "item_id",           limit: 4, null: false
-    t.integer  "catagory_id",       limit: 4
-    t.integer  "recommend_item_id", limit: 4, null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "item_id",           null: false
+    t.integer  "catagory_id"
+    t.integer  "recommend_item_id", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "user_profiles", force: :cascade do |t|
-    t.integer  "user_id",         limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "name",            limit: 255
-    t.string   "default_address", limit: 255
-    t.integer  "image_id",        limit: 4
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "name"
+    t.string   "default_address"
+    t.integer  "image_id"
   end
 
   create_table "users_phone_number", id: false, force: :cascade do |t|
-    t.integer "user_profile_id", limit: 4
-    t.integer "phone_number_id", limit: 4
+    t.integer "user_profile_id"
+    t.integer "phone_number_id"
   end
 
   add_index "users_phone_number", ["phone_number_id"], name: "index_users_phone_number_on_phone_number_id", using: :btree
