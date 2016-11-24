@@ -16,7 +16,7 @@ var DisplayMappedItems = React.createClass({
    	  allSticker.map(function(value){
         array.push(
           <div key = {value.value} className ="stickers">
-          <img src="https://blooming-thicket-10058.herokuapp.com/images/cross-x.png" className="delete-btn"/>
+          <img src="http://blooming-thicket-10058.herokuapp.com/src/images/cross-x.png" className="delete-btn"/>
           <span > {value.name}</span>
           <input type = "hidden" name = "parent_item[]" value = {value.value}/>
           </div>
@@ -33,7 +33,7 @@ var DisplayMappedItems = React.createClass({
    		allSticker.map(function(value){
           array.push(
             <div key = {value.value} className ="childstickers">
-            <img src="https://blooming-thicket-10058.herokuapp.com/images/cross-x.png" className="delete-btn"/>
+            <img src="http://blooming-thicket-10058.herokuapp.com/src/images/cross-x.png" className="delete-btn"/>
             <span > {value.name}</span>
             <input type = "hidden" name = "recommended_item[]" value = {value.value}/>
             </div>

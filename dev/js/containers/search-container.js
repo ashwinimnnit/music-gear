@@ -25,7 +25,7 @@ var UserSearch = React.createClass({
         <Select.Async onChange = {this.handleOnChange}
                       name="form-field-name"
                       loadOptions = {this.getoptions} />
-        <img src ="https://blooming-thicket-10058.herokuapp.com/images/search1.png" 
+        <img src ="http://blooming-thicket-10058.herokuapp.com/src/images/search1.png" 
              className="search-img"/></div>
       )
   },

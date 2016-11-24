@@ -67,7 +67,7 @@ var UserAddressesContainer = React.createClass({
                 <div className = "row">
                   Phone: <input type="text" name = "phone_number" defaultValue = {addressArray[address].phone_number} disabled />
                 </div>
-                   <img src="https://blooming-thicket-10058.herokuapp.com/images/edit-image.jpg" 
+                   <img src="http://blooming-thicket-10058.herokuapp.com/src/images/edit-image.jpg" 
                        className="edit-image-button" 
                        onClick = {this.displayEditableFields.bind(this, addressArray[address])}/>
                       {this.updateButton(addressArray[address].id)}
