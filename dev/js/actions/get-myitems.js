@@ -12,7 +12,7 @@ export default function displayItemAction(userid){
 
  function fetchingUserItems(userid){
    var self = this;
-   var url = "http://rentmymusic.herokuapp.com/user_profile/"+userid+"/items.json"
+   var url = "https://rentmymusic.herokuapp.com/user_profile/"+userid+"/items.json"
    return (axios.get(url))
  }
 

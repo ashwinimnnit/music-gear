@@ -22,7 +22,7 @@ var AddUserItem = React.createClass({
 
   // post user data
   postUserDeatils: function() {
-    var url = "http://rentmymusic.herokuapp.com/user_profile/1/items.json";
+    var url = "https://rentmymusic.herokuapp.com/user_profile/1/items.json";
     var formdata = new FormData();
     var inputs = document.getElementById("addItem-form");
     var self = this;

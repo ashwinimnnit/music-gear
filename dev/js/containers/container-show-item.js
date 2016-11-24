@@ -13,7 +13,7 @@ var ShowItemContainer = React.createClass({
     var imageArr = []
       for(var img in images){
         imageArr.push(<img key= {images[img]}
-                           src={"http://rentmymusic.herokuapp.com"+images[img]}
+                           src={"https://rentmymusic.herokuapp.com"+images[img]}
                            className="item-images" />
                      )
       }
@@ -30,7 +30,7 @@ var ShowItemContainer = React.createClass({
   // execute on page load
   componentDidMount: function() {
     var self = this;
-    axios.get("http://rentmymusic.herokuapp.com/items/"+this.props.itemId+".json")
+    axios.get("https://rentmymusic.herokuapp.com/items/"+this.props.itemId+".json")
       .then(function (response) {
         self.props.displayItemAction(response.data.item)
       })

@@ -25,13 +25,13 @@ var UserSearch = React.createClass({
         <Select.Async onChange = {this.handleOnChange}
                       name="form-field-name"
                       loadOptions = {this.getoptions} />
-        <img src ="http://blooming-thicket-10058.herokuapp.com/src/images/search1.png" 
+        <img src ="https://blooming-thicket-10058.herokuapp.com/src/images/search1.png" 
              className="search-img"/></div>
       )
   },
    
    fetchingData: function (value) {
-    var url = "http://rentmymusic.herokuapp.com/search.json"
+    var url = "https://rentmymusic.herokuapp.com/search.json"
     return(axios({
         method: 'post',
         url: url,
@@ -63,7 +63,7 @@ var UserSearch = React.createClass({
    var self = this
    window.history.pushState("", "", "/item/"+value.value+"");
    this.setState({itemId: value.value})
-    axios.get("http://rentmymusic.herokuapp.com/items/"+value.value+".json")
+    axios.get("https://rentmymusic.herokuapp.com/items/"+value.value+".json")
       .then(function (response) {
          self.props.displayItemAction(response.data.item)
          self.props.recommendedItemAction(value.value)

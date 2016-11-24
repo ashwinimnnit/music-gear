@@ -26,7 +26,7 @@ function initialSate(){
 }
 
 function fetchingData(itemid) {
-    var url = "http://rentmymusic.herokuapp.com/items/"+itemid+"/recommended_item.json"
+    var url = "https://rentmymusic.herokuapp.com/items/"+itemid+"/recommended_item.json"
 	  return(axios({
         method: 'get',
         url: url,

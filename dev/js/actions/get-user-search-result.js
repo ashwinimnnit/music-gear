@@ -28,7 +28,6 @@ export default function getUserSearchResult(value){
 }
 
 function fetchingData(value) {
-    var url = "http://llocalhost:4000/search.json"
 	  return(axios({
         method: 'post',
         url: url,
