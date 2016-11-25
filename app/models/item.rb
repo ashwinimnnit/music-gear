@@ -10,9 +10,9 @@ class Item < ActiveRecord::Base
     temp = {}
     item = find_by_id(param[:id].to_i)
     unless item.nil?
-    item_images = item.images 
+    item_images = item.images
       item_images.each do |img|
-        temp[img.id] = "/system/#{img.imageable_type.downcase}/#{img.id}/medium/#{img.picture_file_name}"
+        temp[img.id] = "/system/#{img.imageable_type.downcase}/#{img.class.name.downcase.pluralize }/#{img.id}/medium/#{img.picture_file_name}"
       end
     end
     response[:item] = item.as_json
@@ -31,8 +31,8 @@ class Item < ActiveRecord::Base
       thumbnail = {}
       i.images.each do |img|
         # /system/item/21/medium/guitar1.jpeg
-        temp[img.id] = "/system/#{img.imageable_type.downcase}/#{img.id}/medium/#{img.picture_file_name}"  #path.picture.url(:medium)
-        thumbnail[img.id] = "/system/#{img.imageable_type.downcase}/#{img.id}/thumb/#{img.picture_file_name}" #img.picture.url(:thumb)
+        temp[img.id] = "/system/#{img.imageable_type.downcase}/#{img.class.name.downcase.pluralize }/#{img.id}/medium/#{img.picture_file_name}"  #path.picture.url(:medium)
+        thumbnail[img.id] = "/system/#{img.imageable_type.downcase}/#{img.class.name.downcase.pluralize }/#{img.id}/thumb/#{img.picture_file_name}" #img.picture.url(:thumb)
       end
       items_list[i.id][:images] = temp
       items_list[i.id][:thumbnail] = thumbnail

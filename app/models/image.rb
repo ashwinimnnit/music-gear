@@ -2,8 +2,8 @@
 class Image < ActiveRecord::Base
   has_attached_file :picture, styles: { medium: '300x300>', thumb: '100x100>' },
                               default_url: '/images/:style/missing.png',
-                              path: 'public/system/:custom_class/:id/:style/:filename',
-                              url: '/system/:custom_class/:id/:style/:basename.:extension'
+                              path: 'public/system/:custom_class/:class/:id/:style/:filename',
+                              url: '/system/:custom_class/:class/:id/:style/:basename.:extension'
   validates_attachment_content_type :picture, content_type: %r{\Aimage\/.*\Z}
 
   belongs_to :imageable, polymorphic: true
