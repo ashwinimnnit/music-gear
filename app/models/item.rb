@@ -1,4 +1,4 @@
-# comments
+# commentss
 class Item < ActiveRecord::Base
   has_many :images, as: :imageable
   belongs_to :user_profile
