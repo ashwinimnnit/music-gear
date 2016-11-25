@@ -537,10 +537,11 @@ li:hover{
 
 
 .ld-i{
-position: relative;
+box-shadow: -1px 5px 21px -4px;
     float: left;
-    left: 49.4%;
-    box-shadow: -1px 5px 21px -4px;
+    left: 55.9%;
+    position: fixed;
+    top: 146px;
     width: 282px;
 }
 
