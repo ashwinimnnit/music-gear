@@ -47,18 +47,21 @@ class RecommendItem < ActiveRecord::Base
     response_array
   end
 
+  # called from item model
   def self.find_recommended_items(items)
     ids = items.map(&:id)
     list = ids.map(&:inspect).join(', ')
     item_recommended_item_mapping = where("item_id in (#{list})").order(:item_id)
     recommended_items_list = recommend_items(item_recommended_item_mapping)
-    merge_item_recommended_items(items, item_recommended_item_mapping, recommended_items_list[0])
+    merge_item_recommended_items(items, item_recommended_item_mapping, recommended_items_list[0]) 
   end
 
   def self.merge_item_recommended_items(items, mapped_items, recommended_items)
     indexed_recommended_items = []
-    recommended_items.each do |itm|
-      indexed_recommended_items[itm.id] = itm
+    unless recommended_items.nil?
+      recommended_items.each do |itm|
+        indexed_recommended_items[itm.id] = itm
+      end
     end
     item_hash = {}
     items.each do |item|
@@ -71,9 +74,11 @@ class RecommendItem < ActiveRecord::Base
 
   def self.map_recommended_items(item, mapped_items, recommended_items)
     hash = {}
-    mapped_items.each do |i|
-      if item['id'].to_i == i.item_id
-        hash[i.recommend_item_id] = recommended_items[i.recommend_item_id]
+    unless mapped_items.empty?
+      mapped_items.each do |i|
+        if item['id'].to_i == i.item_id
+          hash[i.recommend_item_id] = recommended_items[i.recommend_item_id]
+        end
       end
     end
     hash
