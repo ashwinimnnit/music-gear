@@ -58,6 +58,7 @@ var MyItemsContainer = React.createClass({
       }
       itemdiv.push(<hr/>)
     }
+    console.log("my-item-div", itemdiv)
     return itemdiv;
   },
   
