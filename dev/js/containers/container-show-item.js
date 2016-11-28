@@ -14,7 +14,7 @@ var ShowItemContainer = React.createClass({
     var imageArr = []
       for(var img in images){
         imageArr.push(<img key= {images[img]}
-                           src={"http://localhost:4000"+images[img]}
+                           src={"https://rentmymusic.herokuapp.com"+images[img]}
                            className="item-images" />
                      )
       }
@@ -26,7 +26,6 @@ var ShowItemContainer = React.createClass({
           <div className ="raise-btn"> Send Rent Request</div>
         </div>
       )
-    
   },
 
   // execute on page load
@@ -39,7 +38,7 @@ var ShowItemContainer = React.createClass({
   },
 
   render: function() {
-   if (this.props.itemToDisplay.itemReceived){
+   if (this.props.itemToDisplay.itemReceived && this.props.itemToDisplay.payload != null){
      return (
    	    <div>
    	       {this.displayItem()}
