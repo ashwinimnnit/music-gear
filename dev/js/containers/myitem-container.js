@@ -23,6 +23,7 @@ var MyItemsContainer = React.createClass({
    },
 
    itemlisting: function() {
+    console.log("******my*itemlisting**********", this.props.myitems)
     var user_item = this.props.myitems
     var itemdiv = []
     for( var itemId in user_item) {
