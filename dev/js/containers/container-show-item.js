@@ -9,6 +9,7 @@ var ShowItemContainer = React.createClass({
 
   displayItem: function(){
     console.log("display-items", this.props.itemToDisplay.payload)
+    if (this.props.itemToDisplay.payload != null){
     var images = this.props.itemToDisplay.payload.image
     var item = this.props.itemToDisplay.payload
     var imageArr = []
@@ -26,6 +27,12 @@ var ShowItemContainer = React.createClass({
           <div className ="raise-btn"> Send Rent Request</div>
         </div>
       )
+    }
+    else{
+      return(
+        <div></div>
+      )
+    }
   },
 
   // execute on page load
