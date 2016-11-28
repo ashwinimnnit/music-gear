@@ -8,12 +8,13 @@ import {connect} from 'react-redux';
 var ShowItemContainer = React.createClass({
 
   displayItem: function(){
+    console.log("display-items", this.props.itemToDisplay.payload)
     var images = this.props.itemToDisplay.payload.image
     var item = this.props.itemToDisplay.payload
     var imageArr = []
       for(var img in images){
         imageArr.push(<img key= {images[img]}
-                           src={"https://rentmymusic.herokuapp.com"+images[img]}
+                           src={"http://localhost:4000"+images[img]}
                            className="item-images" />
                      )
       }
