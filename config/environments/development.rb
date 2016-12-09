@@ -38,7 +38,7 @@ Rails.application.configure do
 
   # using react componentin develeopment mode
   config.react.variant = :development
-
+  config.action_mailer.default_url_options = { :host => 'localhost' }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

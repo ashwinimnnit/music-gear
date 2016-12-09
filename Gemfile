@@ -20,9 +20,10 @@ gem 'react-rails'
 gem 'puma'
 gem 'pg'
 # Used for imageupload
+#gem 'active_model_serializers', '~> 0.10.0.rc4'
 gem "paperclip", "~> 5.0.0"
-
-# Use jquery as the JavaScript library
+gem 'devise', '~> 4.0.0'
+gem "devise_token_auth" , '~> 0.1.39'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -31,6 +32,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'omniauth'
 gem 'rack-cors', '~> 0.3.1' # enabling cross origin ajax for api calls
 
 # Use ActiveModel has_secure_password

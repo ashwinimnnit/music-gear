@@ -1,5 +1,6 @@
 # comments
 class AddressController < ApplicationController
+  #before_action :authenticate_user!
   def index
     @user_profile = UserProfile.find_by_id(params[:user_profile_id])
     @user_addresses = @user_profile.addresses unless @user_profile.nil?
