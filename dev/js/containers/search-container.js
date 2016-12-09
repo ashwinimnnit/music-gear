@@ -31,7 +31,7 @@ var UserSearch = React.createClass({
   },
    
    fetchingData: function (value) {
-    var url = "https://rentmymusic.herokuapp.com/search.json"
+    var url = "http://localhost:4000/search.json"
     return(axios({
         method: 'post',
         url: url,
@@ -63,7 +63,7 @@ var UserSearch = React.createClass({
    var self = this
    window.history.pushState("", "", "/item/"+value.value+"");
    this.setState({itemId: value.value})
-    axios.get("https://rentmymusic.herokuapp.com/items/"+value.value+".json")
+    axios.get("http://localhost:4000/items/"+value.value+".json")
       .then(function (response) {
          self.props.displayItemAction(response.data.item)
          self.props.recommendedItemAction(value.value)

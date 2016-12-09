@@ -16,6 +16,9 @@ import ManageRecommendedItems from "./components/manage-recommended-items"
 import {createStore, applyMiddleware} from "redux" 
 import allReducers from "./reducers/store"
 import thunk from 'redux-thunk';
+import UserRegistration from "./components/user-registration"
+import UserLogin from "./components/user-login"
+
 
 const store = createStore(allReducers,
    applyMiddleware(thunk)
@@ -26,17 +29,20 @@ const store = createStore(allReducers,
 render((
   <Provider store={store}>
   <Router history={browserHistory}>
+  <Route path="/" component={UserLogin} >
     <Route  component={Layout} >
-    <Route path="/item/:itemid" component={Search} />
-     <Route path="/manage-my-addresses" component={UserAddresses} />
-        <Route path="/admin" component={Admin} >
-        <Route path ="/admin/manage-recomeded-items"
-         component={ManageRecommendedItems}/>
+      <Route path="/item/:itemid" component={Search} />
+      <Route path="/users/sign-up" component={UserRegistration} />
+      <Route path="/manage-my-addresses" component={UserAddresses} />
+          <Route path="/admin" component={Admin} >
+          <Route path ="/admin/manage-recomeded-items"
+                 component={ManageRecommendedItems}/>
         </Route>
-        <Route path="/" component={UserProfile} >  
+        <Route path="/dashboard" component={UserProfile} >  
             <Route path="/myitems" component={MyItems} />
             <Route path="/additem" component={AddUserItem} />
         </Route>
+    </Route>
     </Route>
   </Router>
   </Provider>

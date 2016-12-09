@@ -26,13 +26,14 @@ function initialSate(){
 }
 
 function fetchingData(itemid) {
-    var url = "https://rentmymusic.herokuapp.com/items/"+itemid+"/recommended_item.json"
+    var url = "http://localhost:4000/items/"+itemid+"/recommended_item.json"
 	  return(axios({
         method: 'get',
         url: url,
-        data:  {query: itemid  },
+        data:  {query: itemid, access_token: "-zYKrC_Ll0xCj4hrR4-Uew", client: "aX2KfnmbwZ1OSVmgq2rmyQ", uid: "ashwinidx@gmail.com"  },
       }))
 }
+//
 
 function fetchingDone(recommended_items){
   return {

@@ -757,7 +757,7 @@ background-color: #e7e7e7;
 }
 
 .update-address {
-      background-color: lightseagreen;
+    background-color: lightseagreen;
     cursor: pointer;
     padding: 11px 4px 9px 18px;
     border-radius: 5px;
@@ -765,4 +765,41 @@ background-color: #e7e7e7;
     top: 51px;
     color: white;
     width: 68px;
+}
+
+
+
+.new_user {
+       background-color: #DADFEC;
+    margin-left: 32%;
+    position: relative;
+    top: 105px;
+    width: 30%;
+    padding: 30px 0px 34px 62px;
+    box-shadow: 0px 1px 8px -2px;
+}
+
+.new_user > .field >  input {
+width: 75%;
+    height: 31px;
+    border-radius: 4px;
+    border: solid 1px #c2c2c2;
+    padding: 4px 2px 8px 0px;
+    text-align: center;
+    }
+
+.login{
+   background-color: aliceblue;
+    padding: 9px 19px 10px 20px;
+    width: 10%;
+    cursor: pointer;
+    position: relative;
+    top: 12px;
+    margin-left: 100px;
+    color: dodgerblue;
+}
+
+.fields{
+         color: dodgerblue;
+    font-family: arial;
 }

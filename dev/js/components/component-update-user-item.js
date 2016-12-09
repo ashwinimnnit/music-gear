@@ -14,7 +14,7 @@ var UpdateUserItem = React.createClass({
     fd.append("item[title]" , document.getElementById("title").value)
     fd.append("item[description]", document.getElementById("description").value)
    	var self = this;
-   	var url = "https://rentmymusic.herokuapp.com/user_profile/1/items/"+this.props.itemtoupdate.id+".json"
+   	var url = "http://localhost:4000/user_profile/1/items/"+this.props.itemtoupdate.id+".json"
    	axios({
       method: 'put',
       url: url,
@@ -40,7 +40,7 @@ var UpdateUserItem = React.createClass({
     for (var thumbId in item.thumbnail){
       arr.push(
        		   <div className ="wrap">
-       		   <img src={"https://rentmymusic.herokuapp.com"+item.thumbnail[thumbId]} key= {"img"+thumbId} />
+       		   <img src={"http://localhost:4000"+item.thumbnail[thumbId]} key= {"img"+thumbId} />
        		   <input type="file" id = {thumbId}
        			      name="item_image[]" accept="image/*" 
        			      as="file" onChange = {this.setImageparams}/></div> 

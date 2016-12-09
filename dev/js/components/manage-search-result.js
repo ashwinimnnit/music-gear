@@ -21,7 +21,7 @@ var AdminSearch = React.createClass({
    },
 
     search: function(e){
-    var url = "https://rentmymusic.herokuapp.com/search.json"
+    var url = "http://localhost:4000/search.json"
 	  var self = this
 	  axios({
       method: 'post',

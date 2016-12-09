@@ -95,7 +95,6 @@ var MyItemsContainer = React.createClass({
      return (
        <div> {this.itemlisting()}
        </div>
-
      )
    }
 

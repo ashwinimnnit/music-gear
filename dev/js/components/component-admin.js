@@ -12,16 +12,16 @@ var Admin = React.createClass({
   adminActions: function(){
     var actionitems = {
           'manage-recomeded-items': 'Manage Recomended Items',
-          'manage-catagories': 'Manage Catagories',
-          'manage-action-1': 'Manage Action one',
-          'manage-action-2': 'Manage Action Two',
-          'manage-action-3': 'Manage Action Three',
-          'manage-action-4': 'Manage Action four',
-          'manage-action-5': 'Manage Action five',
-          'manage-action-6': 'Manage Action six',
-          'manage-action-7': 'Manage Action seven',
-          'manage-action-8': 'Manage Action eight',
-          'manage-action-9': 'Manage Action nine'
+          'manage-catagories'     : 'Manage Catagories',
+          'manage-action-1'       : 'Manage Action one',
+          'manage-action-2'       : 'Manage Action Two',
+          'manage-action-3'       : 'Manage Action Three',
+          'manage-action-4'       : 'Manage Action four',
+          'manage-action-5'       : 'Manage Action five',
+          'manage-action-6'       : 'Manage Action six',
+          'manage-action-7'       : 'Manage Action seven',
+          'manage-action-8'       : 'Manage Action eight',
+          'manage-action-9'       : 'Manage Action nine'
     }
     return (actionitems)
   },

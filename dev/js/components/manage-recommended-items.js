@@ -113,7 +113,7 @@ var ManageRecommendedItems = React.createClass({
 
   componentDidMount: function(){
     var self = this;
-    axios.get("https://rentmymusic.herokuapp.com/apis/items/index/col1/title/col2/description/col4/id/offset/0/limit/20.json")
+    axios.get("http://localhost:4000/apis/items/index/col1/title/col2/description/col4/id/offset/0/limit/20.json")
       .then(function (response) {   
           self.setState({
               items: response.data.items

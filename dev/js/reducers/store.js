@@ -4,6 +4,7 @@ import DisplayItem from "./reducer-show-item"
 import RecommendedItems from "./reducer-recommended-items"
 import MyItems from "./myitems"
 import UserAddress from "./user-address-reducer"
+import UserLoginStatus from "./set-user-status"
 
 const allReducers = combineReducers({
 
@@ -11,6 +12,7 @@ const allReducers = combineReducers({
 	displayItem: DisplayItem,
     recommendedItems: RecommendedItems,
     myitems: MyItems,
-    userAddress: UserAddress
+    userAddress: UserAddress,
+    userLoginStatus: UserLoginStatus
 })
 export default allReducers
