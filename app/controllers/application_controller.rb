@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-     debugger
     super
   end
 end
