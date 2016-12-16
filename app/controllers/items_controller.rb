@@ -1,5 +1,6 @@
 # comments
 class ItemsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:search, :show]
   def index
     # later it has to be current_user
     @user_profile = UserProfile.find(params[:user_profile_id].to_i)

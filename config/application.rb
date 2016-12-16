@@ -25,8 +25,10 @@ module Rentmymusic
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
-        resource '*', :headers => :any,:expose  => ['access_token', 'expiry', 'token_type', 'uid', 'client'], :methods => [:get, :post, :put, :delete]
+        resource '*', :headers => :any, :expose  => ['accesstoken', 'expiry', 'token_type', 'uid', 'client'], :methods => [:get, :post, :put, :delete]
       end
     end
   end
 end
+ module Myapp
+ end

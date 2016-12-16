@@ -1,6 +1,7 @@
 module Apis
   class AdminController < ApiController
     def map_recommended_items
+      debugger
       @mapped_item_list = RecommendItem.recommended_item_mapping except_params
     end
 

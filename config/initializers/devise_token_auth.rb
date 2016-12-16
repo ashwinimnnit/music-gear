@@ -17,7 +17,7 @@ DeviseTokenAuth.setup do |config|
   # time. In this case, each request in the batch will need to share the same
   # auth token. This setting determines how far apart the requests can be while
   # still using the same auth token.
-   #config.batch_request_buffer_throttle = 10.seconds
+  config.batch_request_buffer_throttle = 100.seconds
 
   # This route will be the prefix for all oauth2 redirect callbacks. For
   # example, using the default '/omniauth', the github oauth2 provider will
@@ -35,11 +35,12 @@ DeviseTokenAuth.setup do |config|
   # config.default_callbacks = true
 
   # Makes it possible to change the headers names
-  config.headers_names = {:'access-token' => 'access_token',
+  config.headers_names = {:'access-token' => 'accesstoken',
                           :'client' => 'client',
                           :'expiry' => 'expiry',
                           :'uid' => 'uid',
-                          :'token-type' => 'token_type' }
+                          :'token-type' => 'token-type' }
+   
 
   # By default, only Bearer Token authentication is implemented out of the box.
   # If, however, you wish to integrate with legacy Devise authentication, you can
