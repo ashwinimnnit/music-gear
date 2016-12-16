@@ -45,7 +45,6 @@ var UserRegistration = React.createClass({
         url: url,
         data: { email: dataToSend['email'], password: dataToSend['password'], password_confirmation: dataToSend['password_confirmation'], confirm_success_url: "localhost:3000" }
      }).then(function (response){
-       console.log("response---------is ", response)
 
      })
   }

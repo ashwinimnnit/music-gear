@@ -23,11 +23,9 @@ var MyItemsContainer = React.createClass({
    },
 
    itemlisting: function() {
-    console.log("******my*itemlisting**********", this.props.myitems)
     var user_item = this.props.myitems
     var itemdiv = []
     for( var itemId in user_item) {
-      console.log("-----------------for loop-----")
       var indents = [];
         indents.push(<h4  key = {user_item[itemId].id} className ="itm-title">
                      {user_item[itemId].title}</h4>)

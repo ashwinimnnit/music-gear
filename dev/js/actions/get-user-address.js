@@ -14,9 +14,10 @@ function fetchingData(userid){
     axios({
        method: "get",
        url: url,
-       data: {userid: userid}
+       params: {userid: userid}
     })
   )
+
 }
 
 function fetchingDone(addresses){

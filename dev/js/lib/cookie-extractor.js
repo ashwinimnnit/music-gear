@@ -5,6 +5,7 @@ export default class CookieExtractor {
    getCookies(){
      var cookieHash = []
    	 var allCookie = document.cookie
+     console.log("all cookies in lib: ", allCookie)
    	 var cookieArray = allCookie.split(":")
      for( var i=0; i< cookieArray.length; i++){
         var temp = cookieArray[i].split("=")
@@ -13,3 +14,4 @@ export default class CookieExtractor {
      return cookieHash 
    }
 }
+

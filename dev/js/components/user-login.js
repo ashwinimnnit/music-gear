@@ -7,6 +7,17 @@ import Layout from "./component-layout"
 import UserProfile from "./component-user-profile"
 
 
+axios.interceptors.response.use(function (response) {
+    if (typeof response.headers.accesstoken != "undefined"){
+      document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
+    }
+    return response;
+  }, function (error) {
+    return Promise.reject(error);
+  });
+
+
+
 
 var UserLogin = React.createClass({
 
@@ -57,24 +68,18 @@ var UserLogin = React.createClass({
   },
   
    componentDidMount: function() {
-    console.log("=====component did mount here ====")
-    var cookieHash = new Cookie().getCookies()
-    console.log("***********", cookieHash)
+    var cookieHash = new Cookie().getCookies();
     var self = this;
-    axios.get("http://localhost:4000/user_login", {
-      params: {
-        access_token: cookieHash["access_token"],
-        client: cookieHash["client"],
-        uid: cookieHash["uid"]
-      }
+    axios.get("http://localhost:4000/user_login.json", {
     }).then(function (response) {
+      if (typeof response.headers.accesstoken != "undefined"){
       console.log("after checking if user is in loggedin mode", response)
-      document.cookie = "access_token" + "=" + cookieHash["access_token"] + ":" + "uid" + "=" + cookieHash["uid"] + ":" + "client" + "=" + cookieHash["client"] + ":" + "userloginstatus=" + response.data.status
-      console.log(document.cookie, "present cookie*****************")
+      document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
+      }
     }).catch( function ( response){
-      console.log("error occured----", response)
-     document.cookie = "access_token" + "=" + cookieHash["access_token"] + ":" + "uid" + "=" + cookieHash["uid"] + ":" + "client" + "=" + cookieHash["client"] + ":" + "userloginstatus=" + false
-     console.log(document.cookie, "present cookie*****************")
+       if (typeof response.headers.accesstoken != "undefined"){
+         document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
+       }
      self.setState({isUserLoggedIn: "false"})
     })
   },
@@ -93,36 +98,33 @@ var UserLogin = React.createClass({
         url: url,
         data: { email: dataToSend['email'], password: dataToSend['password'] }
      }).then( function (response){
-        console.log("-----------after login--------------")
-        document.cookie = "access_token" + "=" + response.headers.access_token + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true
-        console.log("cookies are")
-        console.log(document.cookie)
-         window.history.pushState("", "", "/dashboard");
-         self.setState({isUserLoggedIn: "true"})
+        if (typeof response.headers.accesstoken != "undefined"){
+      document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
+        }
+        console.log("present cookie are: ----->", document.cookie)
+        console.log("after checking if user is in loggedin mode", response)
+        self.setState({isUserLoggedIn: "true"})  // setting flag for only for rerender
      })
   },
 
   
 	render: function(){
     var cookieHash = new Cookie().getCookies()
-    console.log("logo**************", cookieHash['userloginstatus'], this.state.isUserLoggedIn)
-      if (cookieHash['userloginstatus'] == "true" && this.state.isUserLoggedIn == "true"){
-
-        return(
-          <div>
-            <Layout/>
-            <UserProfile/>
-            {this.props.children}
-          </div>
-        )
-      }
-      else{
-        return(
-           <div> 
-            {this.loginForm()}
-           </div>
-        )
-      }
+    if (cookieHash['userloginstatus'] == "true" && this.state.isUserLoggedIn == "true" ){
+      return(
+        <div>
+          <Layout/>
+          {this.props.children}
+        </div>
+      )
+    }
+    else{
+      return(
+        <div> 
+          {this.loginForm()}
+        </div>
+      )
+    }
 	}
 
 	

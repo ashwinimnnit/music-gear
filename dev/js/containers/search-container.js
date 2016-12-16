@@ -41,10 +41,12 @@ var UserSearch = React.createClass({
 
   getoptions: function(value) {
     var self = this
-    return this.fetchingData(value)
-      .then( function (response) {
-      return {options: self.searchSuggestion(response.data.result)}    
-    })
+    if (value != ""){
+      return this.fetchingData(value)
+        .then( function (response) {
+        return {options: self.searchSuggestion(response.data.result)}    
+      })
+    }
   },
 
   searchSuggestion: function(data){

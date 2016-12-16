@@ -19,6 +19,7 @@ var Layout = React.createClass({
           <li><Link to="/myitems" >My Items</Link></li>
           <li><Link to="/additem" > Add item</Link></li>
           <li><Link to="/admin" > Administration</Link></li>
+          <li><Link to="/dashboard" > Profile</Link></li>
           <li><Link to="/" > Home</Link></li>
         </ul>
       </div>

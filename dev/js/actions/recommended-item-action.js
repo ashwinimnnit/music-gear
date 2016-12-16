@@ -30,7 +30,7 @@ function fetchingData(itemid) {
 	  return(axios({
         method: 'get',
         url: url,
-        data:  {query: itemid, access_token: "-zYKrC_Ll0xCj4hrR4-Uew", client: "aX2KfnmbwZ1OSVmgq2rmyQ", uid: "ashwinidx@gmail.com"  },
+        params:  {query: itemid}
       }))
 }
 //
