@@ -29,6 +29,7 @@ const store = createStore(allReducers,
 render((
   <Provider store={store}>
   <Router history={browserHistory}>
+  <Route path="/users/sign-up" component={UserRegistration} />
     <Route path="/" component={UserLogin} >
 
     <Route  component={Layout} >
@@ -39,7 +40,6 @@ render((
     </Route>   
 
       <Route path="/item/:itemid" component={Search} />
-      <Route path="/users/sign-up" component={UserRegistration} />
       <Route path="/manage-my-addresses" component={UserAddresses} />
           <Route path="/admin" component={Admin} >
           <Route path ="/admin/manage-recomeded-items"
