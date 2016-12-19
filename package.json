@@ -4,11 +4,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack",
-    "start": "node server.js", "postinstall": "webpack -p"
+    "start": "webpack-dev-server"
   },
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.14.0",
+    "axios": "https://github.com/ashwinimnnit/custom-axios.git",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.13.0",
