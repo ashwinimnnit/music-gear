@@ -45,7 +45,7 @@ var UserRegistration = React.createClass({
 	},
  
   handleclick: function(){
-  	var url = "http://localhost:4000/auth.json"
+  	var url = "https://rentmymusic.herokuapp.com/auth.json"
     var dataToSend = {}
     var formData = new FormData(document.getElementById("new_user"))
     for(var pair of formData.entries()) {
