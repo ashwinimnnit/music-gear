@@ -1,9 +1,9 @@
  var express = require('express');
 const path = require ('path');
 //const port = process.env.PORT;
-app.set('port', (process.env.PORT || 5000));
 const app = express();
  app.use(express.static(__dirname));
+app.set('port', (process.env.PORT || 5000));
 
  app.get("*", (req, res) =>{
     res.sendFile(path.resolve(__dirname, "index.html"))
