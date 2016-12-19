@@ -3,9 +3,21 @@ import axios from "axios"
 
 var UserRegistration = React.createClass({
 
+   loginHeader: function(){
+    return(
+      <div className = "header">
+        <div className="dropdown">
+          <div className="dropdown-content">
+         </div>
+      </div>    
+    </div>
+      )
+  },
+
 	render: function(){
 	  return(
         <div> 
+        {this.loginHeader()}   
          <form className="new_user" action="/users" id ="new_user" >
            <div className="field">
              <label for="user_email">Email</label><br/>
@@ -33,7 +45,7 @@ var UserRegistration = React.createClass({
 	},
  
   handleclick: function(){
-  	var url = "https://rentmymusic.herokuapp.com/auth.json"
+  	var url = "http://localhost:4000/auth.json"
     var dataToSend = {}
     var formData = new FormData(document.getElementById("new_user"))
     for(var pair of formData.entries()) {

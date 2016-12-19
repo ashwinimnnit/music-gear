@@ -774,9 +774,20 @@ background-color: #e7e7e7;
     position: relative;
     top: 105px;
     width: 30%;
-    padding: 30px 0px 34px 62px;
+    padding: 30px 0px 61px 62px;
     box-shadow: 0px 1px 3px -1px;
+    color: #757575;
 }
+ .new_user > .actions > input {
+     padding: 6px 11px 7px 9px;
+    position: relative;
+    float: left;
+    left: 103px;
+    top: 16px;
+    color: white;
+    background-color: dodgerblue;
+    cursor: pointer;
+ }
 
 .new_user > .field >  input {
 width: 75%;
@@ -801,4 +812,14 @@ width: 75%;
 .fields{
          color: dodgerblue;
     font-family: arial;
+}
+
+
+.user-registration-link > a{
+    
+color: dodgerblue;
+    position: relative;
+    float: left;
+    left: 20px;
+    padding: 9px 0px 0px 0px;
 }
