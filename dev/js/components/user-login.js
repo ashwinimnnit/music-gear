@@ -70,7 +70,7 @@ var UserLogin = React.createClass({
    componentDidMount: function() {
     var cookieHash = new Cookie().getCookies();
     var self = this;
-    axios.get("http://localhost:4000/user_login.json", {
+    axios.get("https://rentmymusic.herokuapp.com/user_login.json", {
     }).then(function (response) {
       if (typeof response.headers.accesstoken != "undefined"){
       console.log("after checking if user is in loggedin mode", response)
@@ -86,7 +86,7 @@ var UserLogin = React.createClass({
 
 
   handleclick: function(){
-      var url = "http://localhost:4000/auth/sign_in.json"
+      var url = "https://rentmymusic.herokuapp.com/auth/sign_in.json"
       var dataToSend = {}
       var formData = new FormData(document.getElementById("new_user"))
       for(var pair of formData.entries()) {

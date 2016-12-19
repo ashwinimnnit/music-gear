@@ -36,7 +36,7 @@ var UserItems = React.createClass({
       var item_images = user_item[itemId].images
       for(var img_path in item_images) {
         indents.push(<div className ="itm-up">
-                     <img src={"http://localhost:4000"+item_images[img_path]} 
+                     <img src={"https://rentmymusic.herokuapp.com"+item_images[img_path]} 
                           id={"itmimg-"+img_path} onMouseOver = {this.mouseOver}  />
                      </div>   
         )
