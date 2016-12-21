@@ -1,3 +1,4 @@
+import axios from "axios"
 
 export default class CookieExtractor {
   //contructor(){}
@@ -11,6 +12,9 @@ export default class CookieExtractor {
         var temp = cookieArray[i].split("=")
         cookieHash[temp[0]] = temp[1]
      }
+     axios.defaults.headers.accesstoken = cookieHash['accesstoken']
+     axios.defaults.headers.uid = cookieHash['uid']
+     axios.defaults.headers.client = cookieHash['client']
      return cookieHash 
    }
 }

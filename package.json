@@ -9,7 +9,7 @@
 	},
 	"license": "ISC",
 	"dependencies": {
-		"axios": "git://github.com/ashwinimnnit/custom-my-axios.git",
+		"axios": "^0.15.3",
 		"babel-core": "^6.10.4",
 		"babel-loader": "^6.2.4",
 		"babel-polyfill": "^6.13.0",
