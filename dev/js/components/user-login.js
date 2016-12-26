@@ -10,15 +10,21 @@ import { Router, Route, Link } from 'react-router'
 
 
 axios.interceptors.response.use(function (response) {
+  console.log("BEFORE IF STATEMENT IN INTERCEPTOR", response.headers)
     if (typeof response.headers.accesstoken != "undefined"){
-      document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
+    console.log("THIS WAS EXECUTED ON INTERCEPTYOR==on after interceptor axios===>", response.headers)
+
+      //document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true + "; path=/; domain=http://localhost:3000/";
+  sessionStorage.setItem('accesstoken', " "+response.headers.accesstoken+"");
+  sessionStorage.setItem('uid', " "+response.headers.uid+"");
+  sessionStorage.setItem('client', " "+response.headers.client+"");
+    sessionStorage.setItem('userloginstatus', "true");
+
     }
     return response;
   }, function (error) {
     return Promise.reject(error);
   });
-
-
 
 
 var UserLogin = React.createClass({
@@ -78,13 +84,15 @@ var UserLogin = React.createClass({
     var self = this;
     axios.get("https://rentmymusic.herokuapp.com/user_login.json", {
     }).then(function (response) {
-      if (typeof response.headers.accesstoken != "undefined"){
-      console.log("after checking if user is in loggedin mode", response)
-      document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
-      }
+      //if (typeof response.headers.accesstoken != "undefined" ){
+      //console.log("after checking if user is in loggedin mode didmount", response)
+      //document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
+      //}
     }).catch( function ( response){
-       if (typeof response.headers.accesstoken != "undefined"){
-         document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
+       if (typeof response.headers.accesstoken != "undefined" && 1==2){
+                  console.log("this was receieved==on componenetdidmount===>", response.headers)
+
+        // document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
        }
      self.setState({isUserLoggedIn: "false"})
     })
@@ -104,11 +112,10 @@ var UserLogin = React.createClass({
         url: url,
         data: { email: dataToSend['email'], password: dataToSend['password'] }
      }).then( function (response){
-        if (typeof response.headers.accesstoken != "undefined"){
-      document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
-        }
-        console.log("present cookie are: ----->", document.cookie)
-        console.log("after checking if user is in loggedin mode", response)
+        //if (typeof response.headers.accesstoken != "undefined" ){
+      //console.log("this was receieved==on handleclick===>", response.headers)
+      //document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true 
+        //}
         self.setState({isUserLoggedIn: "true"})  // setting flag for only for rerender
      })
   },
@@ -147,3 +154,7 @@ function mapStateToProps (state){
 }
 
  export default UserLogin
+
+
+
+
