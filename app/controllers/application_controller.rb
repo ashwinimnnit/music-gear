@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    p "=====accesstoken is ----------------> #{request.headers['accesstoken']}"
+    p "=====accesstoken is ----------------> #{request.headers['accesstoken']}, client---> #{request.headers['client']} , uid---->   #{request.headers['uid']}"
     super
   end
 end
