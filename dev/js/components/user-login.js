@@ -11,16 +11,12 @@ import { Router, Route, Link } from 'react-router'
 
 axios.interceptors.response.use(function (response) {
   console.log("BEFORE IF STATEMENT IN INTERCEPTOR", response.headers)
-    if (typeof response.headers.accesstoken != "undefined"){
+  if (typeof response.headers.accesstoken != "undefined"){
     console.log("THIS WAS EXECUTED ON INTERCEPTYOR==on after interceptor axios===>", response.headers)
-
-      //document.cookie = "accesstoken" + "=" + response.headers.accesstoken + ":" + "uid" + "=" + response.headers.uid + ":" + "client" + "=" + response.headers.client + ":" + "userloginstatus=" + true + "; path=/; domain=http://localhost:3000/";
-  sessionStorage.setItem('accesstoken', " "+response.headers.accesstoken+"");
-  sessionStorage.setItem('uid', " "+response.headers.uid+"");
-  sessionStorage.setItem('client', " "+response.headers.client+"");
-    sessionStorage.setItem('userloginstatus', "true");
-
-    }
+    var userInfo = "accesstoken="+response.headers.accesstoken+":uid="+response.headers.uid+":client="+response.headers.client+":userloginstatus="+true+""
+    var encryptUserCredential = new Cookie().encryptUserCredential(userInfo)
+    localStorage.setItem('clienttoken', ""+encryptUserCredential+"");
+  }
     return response;
   }, function (error) {
     return Promise.reject(error);
@@ -30,7 +26,7 @@ axios.interceptors.response.use(function (response) {
 var UserLogin = React.createClass({
 
  getInitialState: function() {
-    var cookieHash = new Cookie().getCookies()
+    var cookieHash = new Cookie().getUserCredentials()
     return { 
       isUserLoggedIn: cookieHash['userloginstatus']
     };
@@ -80,9 +76,9 @@ var UserLogin = React.createClass({
   },
   
    componentDidMount: function() {
-    var cookieHash = new Cookie().getCookies();
+    var cookieHash = new Cookie().getUserCredentials();
     var self = this;
-    axios.get("https://rentmymusic.herokuapp.com/user_login.json", {
+    axios.get(" https://rentmymusic.herokuapp.com/user_login.json", {
     }).then(function (response) {
       //if (typeof response.headers.accesstoken != "undefined" ){
       //console.log("after checking if user is in loggedin mode didmount", response)
@@ -100,7 +96,7 @@ var UserLogin = React.createClass({
 
 
   handleclick: function(){
-      var url = "https://rentmymusic.herokuapp.com/auth/sign_in.json"
+      var url = " https://rentmymusic.herokuapp.com/auth/sign_in.json"
       var dataToSend = {}
       var formData = new FormData(document.getElementById("new_user"))
       for(var pair of formData.entries()) {
@@ -122,7 +118,7 @@ var UserLogin = React.createClass({
 
   
 	render: function(){
-    var cookieHash = new Cookie().getCookies()
+    var cookieHash = new Cookie().getUserCredentials()
     if (cookieHash['userloginstatus'] == "true" && this.state.isUserLoggedIn == "true" ){
       return(
         <div>
